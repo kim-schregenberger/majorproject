@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code structuring</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css">
+</head>
+
+<body>
+    <header>
+        <!-- NAV -->
+        <div class="navbar">
+            <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
+            <div class="menu-btn" onclick="toggleNav()">MENU</div>
+        </div>
+    
+        <div class="nav-overlay" id="navOverlay">
+            <div class="logo-overlay logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
+            <div class="close-btn" onclick="toggleNav()">&times;</div>
+            <a href="info.html#betroffene" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
+            <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
+            <a href="#" onclick="closeNav()">Erfahrungsberichte</a>
+            <a href="spenden.html" onclick="closeNav()">Spenden</a>
+        </div>
+    </header>
+
+    <main>
+
+            <!-- Add "show-initial" class to grain if don't want it in stages -->
+            <div class="grain"></div>
+
+            <!-- Sections -->
+            <section class="hero">
+                <p>Betroffene, Angehörige und Fachpersonen teilen ihre Erfahrungen mit Brustkrebs. Ihre Einblicke zeigen, wie Unterstützung aussehen kann und was ihnen in schwierigen Zeiten geholfen hat.</p>
+                <span>Ein Beitrag zu mehr Verständnis und Mut.</span>
+                <h1>Einblicke aus unterschiedlichen Perspektiven</h1>
+            </section>
+
+            <section class="testimonial-betroffene">
+                <div>
+                    <p class="quote">&bdquo;Es ist nicht immer einfach, Unterstützung zuzulassen – aber genau das hat mir geholfen, nicht aufzugeben.&ldquo;</p>
+                    <span>Sabine, im Alter von 42 Jahren mit Brustkrebs diagnostiziert</span>
+                </div>
+
+                <div class="perspektive">
+                    <div class="section title">
+                        <h2>Aus der Sicht einer Betroffenen</h2>
+                    </div>
+                    <div class="section text">
+                        <p>&bdquo;Als ich meine Diagnose erhielt, war das ein Schock. Doch im Laufe der Zeit habe ich gelernt, wie wichtig es ist, Hilfe anzunehmen und sich mit anderen Betroffenen auszutauschen. Besonders wertvoll waren Gespräche mit Menschen, die verstanden haben, wie ich mich fühle.&ldquo;
+                            <br> <br>
+                            Sabine, 45 Jahre alt, erhielt vor drei Jahren die Diagnose Brustkrebs. Nach Operation und Chemotherapie hat sie gelernt, wie wichtig der Austausch mit anderen Betroffenen und das Annehmen von Hilfe für ihre Genesung war.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonial-angehoerige">
+                <div>
+                    <p class="quote">&bdquo;Die Hoffnung nicht verlieren, dranbleiben und weiterkämpfen&ldquo;</p>
+                    <span>Valentin, Sohn einer Brustkrebs-Patientin</span>
+                </div>
+
+                <div class="perspektive">
+                    <div class="section title">
+                        <h2>Aus der Sicht eines Angehörigen</h2>
+                    </div>
+                    <div class="section text">
+                        <p>
+                            &bdquo;Als mich meine Mutter über ihre Diagnose informiert hat, fühlte ich mich niedergeschlagen, überrascht und fand es unfair, da mein Vater auch schon Krebs hatte. 
+                                Besonders schwer war es zuzusehen, wie die Auswirkungen der Chemotherapie waren (Haarausfall, Energielevel hat abgenommen, Gesicht hat sich verändert).&ldquo;
+                            <br><br>
+                                Valentin, begleitete seine Mutter durch ihre Brustkrebserkrankung. Durch emotionale Unterstützung, Unterstützung beim Kochen und im Haushalt, konnte er seiner Mutter während ihrer Krankheit beistehen.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonial-fachpersonal">
+                <div>
+                    <p class="quote">&bdquo;Empathie, Offenheit und ein wertschätzender Umgang sind fast genauso wichtig wie die richtige Therapie.&ldquo;</p>
+                    <span>Dr. med. Taverna, Chefarzt Onkologie/Hämatologie Spital Thurgau AG</span>
+                </div>
+                <div class="perspektive">
+                    <div class="section title">
+                        <h2>Aus der Sicht eines Onkologen</h2>
+                    </div>
+                    <div class="section text">
+                        <p>&bdquo;In meiner Arbeit sehe ich täglich, wie wichtig ein starkes Umfeld für den Heilungsprozess ist. Betroffene brauchen medizinische, aber auch emotionale Unterstützung, um die Herausforderungen der Erkrankung zu bewältigen.&ldquo;
+                            <br> <br>
+                            Dr. med. Christian Taverna ist Chefarzt für Onkologie und Hämatologie und hat über 15 Jahre Erfahrung in der Behandlung von Brustkrebs. Er setzt sich dafür ein, Betroffenen und Angehörigen nicht nur medizinisch, sondern auch emotional beizustehen.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="canvas particles">
+                <canvas class="webgl"></canvas>
+            </div>
+
+    </main>
+
+    <footer>
+        <p>Design & Development by Kim | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+    </footer>
+    
+    
+    <!-- Script -->
+    <script type="module" src="./script.js"></script>
+
+    <script>
+        // Navbar
+        function toggleNav() {
+            const navOverlay = document.getElementById('navOverlay')
+            navOverlay.classList.toggle('nav-active')
+        }
+    
+        // Close nav
+        function closeNav() {
+            const navOverlay = document.getElementById('navOverlay')
+            navOverlay.classList.remove('nav-active')
+        }
+    
+        // Navigate to id and close nav
+        function navigateToSection(sectionId) {
+            closeNav()
+            const section = document.getElementById(sectionId)
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' })
+            }
+        }
+    
+        // Close nav when clicking a link, even on the same page
+        document.querySelectorAll('.nav-overlay a').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                const href = event.target.getAttribute('href')
+                if (href.startsWith("#")) {
+                    const sectionId = href.substring(1)
+                    navigateToSection(sectionId)
+                } else {
+                    closeNav()
+                }
+            })
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,700 @@
+/* 01: HTML, Body */
+/* 02: Header, Footer */
+/* 03: Fonts */
+/* 04: Canvas */
+/* 05: Overlay */
+
+
+/* ------------------------------------------------------------------------------------ */
+
+/* 01: HTML, Body */
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    background: #211d20;
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body
+{
+    position: relative;
+    z-index: 1;
+
+    padding: 2rem 3rem;
+    background-color: #211d20;
+    
+    /* Font */
+    color: white;
+    font-family: "halyard-text", sans-serif;
+    text-align: start;
+}
+
+
+
+
+/* 02: Header, Footer */
+header, footer
+{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Nav */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: relative;
+    z-index: 20;
+}
+.menu-btn {
+    cursor: pointer;
+}
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #211d20;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 20;
+}
+.nav-overlay a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    display: block;
+    padding: 0rem 3rem;
+}
+.nav-overlay a:hover {
+    color: #C39DB7;
+}
+.nav-active {
+    display: flex;
+}
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+.logo-overlay.logo a{
+    position: absolute;
+    top: 1.8rem;
+    left: 0rem;
+    font-size: 16px;
+}
+
+
+
+
+
+
+/* 03: Fonts */
+h1
+{
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 95%;
+    padding: 1rem 0rem;
+}
+h2, p.quote
+{
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 95%;
+    padding: 1rem 0rem;
+    font-family: "halyard-text", sans-serif;
+}
+p
+{
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 100%;
+    font-family: "inter", sans-serif;
+    padding-bottom: 1rem;
+}
+span, span a
+{
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 100%;
+    font-family: "halyard-text", sans-serif;
+    color: #C39DB7;
+
+}
+
+
+
+
+/* 04: Canvas */
+.webgl {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    outline: none;
+    background-color: rgba(245, 245, 245, 0.132);
+    z-index: -2;
+}
+
+
+canvas {
+    display: block;
+}
+
+
+
+
+/* 05: Overlay */
+.grain
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #211d2084;
+    z-index: -1;
+}
+
+
+
+
+
+ul
+{
+    padding-bottom: 1rem;
+}    
+
+.hidden {
+    display: none;
+}    
+
+
+.canvas.stages.visible {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 4rem;
+    /* background-color: #ff54d455; */
+}    
+
+.canvas.stages {
+    display: none;
+}    
+
+
+.canvas.stages div
+{
+    padding: 2rem 3rem;
+    position: relative;
+}    
+
+.canvas.stages canvas
+{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}    
+
+
+
+/* Section Mobile */
+section
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 85vh;
+}
+
+section.scroll
+{
+    height: auto;
+}
+
+
+section.scroll div, section.info div, section.testimonial div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 85vh;
+}
+
+
+main .stages-section
+{
+    position: absolute;
+}
+
+main .scroll
+{
+    position: relative;
+}
+
+
+
+/* Hide when Stages active */
+.show-initial
+{
+    display: flex;
+}
+
+.hide
+{
+    display: none !important;
+}
+
+
+
+
+.hero
+{
+    align-items: flex-start;
+}
+
+
+
+
+
+/* Interact with canvas through html */
+.stages-section, .grain {
+    pointer-events: none;
+}
+
+.go-back
+{
+    pointer-events: all;
+}
+
+
+
+
+.infopage
+{
+    height: auto;
+    padding: 2rem 0rem 4rem 0rem;
+}
+
+
+
+
+
+
+
+li
+{
+    list-style: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: white;
+}
+
+button
+{
+    border-radius: 50px;
+    border-color: white;
+    border: solid 1px white;
+    color: white;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover
+{
+    background-color: #c39db78d;
+}
+
+
+
+
+section.cta div ul li
+{
+    padding-bottom: 1rem;
+}
+
+section.cta div ul li div
+{
+    width: 100%;
+}
+
+
+.line
+{
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+/* Audio */
+.audio
+{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    /* width: 100%; */
+}
+
+.backgroundaudio {
+    height: 0;
+    width: 0;
+  }
+  
+  .equalizer{
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      width: 40px;
+      height: 20px;
+      margin-left: 50px;
+      margin-bottom: 20px;
+  }
+  .equalizer .equalizer__bar {
+      /* background: #C39DB7; */
+      background: white;
+      bottom: 1px;
+      height: 3px;
+      position: absolute;
+      width: 1px;
+      animation: sound 0ms -800ms linear infinite alternate;
+  }
+  
+  .speaker {
+    width: 20px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .mute .equalizer .equalizer__bar {
+    animation: sound 0ms -800ms linear alternate;
+  }
+  .equalizer__bar:nth-of-type(1) {
+          left: 1px;
+      animation-duration: 1000ms;
+      animation-delay: 0ms;
+  }
+  .equalizer__bar:nth-of-type(2) {
+        left: 5px;
+      animation-duration: 1000ms;
+      animation-delay: 300ms;
+  }
+  .equalizer__bar:nth-of-type(3) {
+    left: 9px;
+      animation-duration: 1000ms;
+      animation-delay: 600ms;
+  }
+  .equalizer__bar:nth-of-type(4) {
+    left: 13px;
+      animation-duration: 1000ms;
+      animation-delay: 900ms;
+  }
+  .equalizer__bar:nth-of-type(5) {
+    left: 17px;
+      animation-duration: 1000ms;
+      animation-delay: 1200ms;
+  }
+  .equalizer__bar:nth-of-type(6) {
+        left: 21px;
+      animation-duration: 1000ms;
+      animation-delay: 1500ms;
+  }
+  
+  @keyframes sound{0%{height:3px}100%{height:18px}}
+
+
+
+
+
+
+
+/* .icon
+{
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+    font-size: 1rem;
+    color: white;
+}
+ */
+
+
+
+
+/* __________________________________________ */
+
+/* Media query for iPad (tablet) */
+@media screen and (min-width: 768px) and (max-width: 1024px) 
+{
+
+    /* 01: HTML, Body */
+    body
+    {
+        padding: 2rem 6rem;
+        background-color: #211d20;
+    }
+    
+    h1
+    {
+        font-size: 80px;
+        font-weight: 300;
+        line-height: 95%;
+    }
+    h2, p.quote
+    {
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 95%;
+    }
+    p
+    {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 95%;
+    }
+    span
+    {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 95%;
+        color: #C39DB7;
+    }
+
+
+    /* 02: Header, Footer */
+    /* 03: Fonts */
+    /* 04: Canvas */
+    /* 05: Overlay */
+
+    .testimonial-betroffene, .testimonial-angehoerige, .testimonial-fachpersonal
+    {
+        height: auto;
+        padding-bottom: 10rem;
+    }
+
+
+    .canvas.stages
+    {
+        align-items: center;
+    }
+
+    .canvas.stages div
+    {
+        padding-left: 50%;
+        padding-top: 0rem;
+    }
+
+    .canvas.stages div h2
+    {
+        padding-top: 0rem;
+    }
+
+
+}
+
+
+
+/* Media query for Desktop */
+@media screen and (min-width: 1025px) 
+{
+        /* 01: HTML, Body */
+        body
+        {
+            padding: 2rem 10rem;
+            background-color: #211d20;
+        }
+
+        /* 02: Header, Footer */
+
+
+        /* 03: Fonts */
+        h1
+        {
+            font-size: 100px;
+            font-weight: 300;
+            line-height: 95%;
+        }
+        h2, p.quote
+        {
+            font-size: 50px;
+            font-weight: 300;
+            line-height: 95%;
+        }
+        p
+        {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 95%;
+        }
+        span
+        {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 95%;
+            color: #C39DB7;
+        }
+
+
+
+        /* 04: Canvas */
+        /* 05: Overlay */
+
+
+
+        /* Erfahrungsberichte */
+        .perspektive
+        {
+            display: flex;  
+            align-items: flex-start;
+            padding-top: 3rem;
+            gap: 2rem;
+        }
+        .perspektive div
+        {
+            width: 50%;
+        }
+        .perspektive div h2
+        {
+            padding: 0;
+        }
+
+
+        /* CTA Home / Links */
+        section.cta, .infopage
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            height: 85vh;
+        }
+
+        section.cta div.cta-flex,  section.infopage div.cta, section.infopage div.text
+        {
+            width: 50%;
+            height: 60%;
+        }
+
+        .cta-flex h2, .cta h2
+        {   
+            padding-top: 0;
+        }
+
+        section.cta div ul
+        {
+            width: 100%;
+
+        }
+
+        section.cta div ul li
+        {
+            padding-bottom: 1.5rem;
+        }
+
+        section.cta div ul li div
+        {
+            width: 100%;
+        }
+
+        .line
+        {
+            height: 0.5px;
+            width: 100%;
+            background-color: white;
+        }
+
+
+
+
+        /* Stadien bei Scroll Rechts */
+
+        .scroll div.scroll-section
+        {
+            padding-left: 50%;
+        }
+
+        #section-start, #section-0
+        {
+            padding: 0;
+        }
+
+
+
+
+        .canvas.stages div
+        {
+            padding: 2rem 10rem;
+        }
+
+        .start p
+        {
+            width: 50%;
+        }
+
+
+
+    
+        .canvas.stages
+{
+    align-items: center;
+}
+
+.canvas.stages div
+{
+    padding-left: 50%;
+    padding-top: 0rem;
+}
+
+.canvas.stages div h2
+{
+    padding-top: 0rem;
+}
+
+
+        
+
+    
+
+
+
+}
+
+
