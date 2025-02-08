@@ -29,15 +29,15 @@ export default class Stage {
             this.debugFolder = this.debug.ui.addFolder('Stages')
         }
 
-        this.currentStage = null  // Track the current stage model
+        this.currentStage = null
     }
 
-    // Device detection function
     detectMobileDevice() {
-        return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(window.navigator.userAgent) || window.innerWidth < 768
+        const screenWidth = window.innerWidth;
+        return screenWidth <= 1024;
     }
     
-
+    
     // Loads the 3D model for a specific stage
     loadStage(stageNumber) {
         if (!this.resource || !this.resource.scene) {
@@ -64,19 +64,44 @@ export default class Stage {
     
         // Select the model for the stage
         this.gltfChild = sceneClone.children[childIndex];
+
     
-        // **RESET TRANSFORMATIONS**: Ensure the model starts with default settings
+        // Reset transformation so model starts with default settings
         this.gltfChild.scale.set(1, 1, 1); 
         this.gltfChild.position.set(0, 0, 0);
     
-        // **APPLY DEVICE-SPECIFIC TRANSFORMATIONS**
-        if (this.isMobile) {
+        // apply device specific transformations
+        if (this.isMobile) 
+            {
             this.gltfChild.scale.set(1.2, 1.2, 1.2);
+
+            console.log("gltfScale",this.gltfChild.scale);
+
             this.gltfChild.position.set(0, -2.5, 0);
-        } else {
-            this.gltfChild.scale.set(1.6, 1.6, 1.6);
-            this.gltfChild.position.set(0, -1, -4);
-        }
+            console.log("gltfPosition",this.gltfChild.position);
+
+            this.initialCameraPosition = { x: -15, y: 0, z: 1.5 };
+            console.log("initialCameraPosition",this.initialCameraPosition);
+            } 
+            else 
+            {
+                this.gltfChild.scale.set(2.2,2.2,2.2);
+                console.log("gltfScale",this.gltfChild.scale);
+
+                this.gltfChild.position.set(-2,-2,-1.5);
+                console.log("gltfPosition",this.gltfChild.position);
+
+                this.initialCameraPosition = { x: -15, y: 0, z: 1.5 };
+                console.log("initialCameraPosition",this.initialCameraPosition);
+            }
+                // Store the initial model state
+                this.initialModelState = 
+                {
+                    position: this.gltfChild.position.clone(),
+                    scale: this.gltfChild.scale.clone(),
+                    rotation: this.gltfChild.rotation.clone(),
+                };
+        
     
         // Add the model to the scene
         this.scene.add(this.gltfChild);
@@ -85,10 +110,27 @@ export default class Stage {
     
         // Track the current stage model
         this.currentStage = this.gltfChild;
+        
+    }
+
+    resetStage() {
+        if (!this.currentStage || !this.initialModelState || !this.initialCameraPosition) {
+            console.error('No current stage or initial states to reset.');
+            return;
+        }
+
+        // Reset model transformations
+        this.currentStage.position.copy(this.initialModelState.position);
+        this.currentStage.scale.copy(this.initialModelState.scale);
+        this.currentStage.rotation.copy(this.initialModelState.rotation);
+
+        // Reset camera position
+        this.camera.position.set(-15, 0, 1.5);
+        this.camera.lookAt(0, 0, 0);
+
+        console.log('Stage and camera have been reset to their initial states.');
     }
     
-    
-
     // Update method (called every frame)
     update() {
         if (this.gltfChild) {

@@ -19,9 +19,9 @@ export default {
         rollupOptions: {
             input: {
                 main: 'src/index.html',
-                erfahrungen: 'src/ erfahrungen.html',
-                info: 'src/ info.html',
-                spenden: 'src/ spenden.html',
+                erfahrungen: 'src/erfahrungen.html',
+                info: 'src/info.html',
+                spenden: 'src/spenden.html',
             },
         },
     },

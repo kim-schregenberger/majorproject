@@ -3,36 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gemeinsam gegen Brustkrebs. Worte, Gesten, Nähe – sie können mehr bewirken, als wir oft denken. Diese Seite lädt dich ein, zu verstehen und zu unterstützen.">
     <title>Code structuring</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css">
 </head>
 
-<body>
+<body class="body-erfahrungen">
     <header>
         <!-- NAV -->
         <div class="navbar">
-            <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
+            <div class="logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
             <div class="menu-btn" onclick="toggleNav()">MENU</div>
         </div>
     
         <div class="nav-overlay" id="navOverlay">
-            <div class="logo-overlay logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
-            <div class="close-btn" onclick="toggleNav()">&times;</div>
-            <a href="info.html#betroffene" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
-            <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
-            <a href="#" onclick="closeNav()">Erfahrungsberichte</a>
-            <a href="spenden.html" onclick="closeNav()">Spenden</a>
+            <div class="bg-container-nav" id="navBg">
+                <img src="./images/bgimg.webp" alt="">
+            </div>
+            <div class="logo-overlay logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
+            <div class="close-btn" onclick="toggleNav()"><img src="./images/cross.svg" alt="" style="width: 20px; height: 20px;"></div>
+            <div class="navflex">
+                <div>
+                    <p class="navstart">Startseite</p>
+                    <a href="index.html#section-1">Stadium 1</a>
+                    <a href="index.html#section-2">Stadium 2</a>
+                    <a href="index.html#section-3">Stadium 3</a>
+                    <a href="index.html#section-4">Stadium 4</a>
+                </div>
+        
+                <div>
+                    <p class="navothets">Weitere Seiten</p>
+                    <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
+                    <a href="info.html" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
+                    <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
+                    <a href="spenden.html" onclick="closeNav()">Unterstützen</a>
+                </div>
+            </div>
+            <div>
+                <a class="impressum" href="">Impressum und Datenschutz</a>
+            </div>
         </div>
     </header>
 
     <main>
+            
+        <div class="bg-container move">
+            <img src="./images/bgimg.webp" alt="">
+        </div>
+    
 
             <!-- Add "show-initial" class to grain if don't want it in stages -->
             <div class="grain"></div>
 
             <!-- Sections -->
-            <section class="hero">
+            <section class="hero erfahrung">
                 <p>Betroffene, Angehörige und Fachpersonen teilen ihre Erfahrungen mit Brustkrebs. Ihre Einblicke zeigen, wie Unterstützung aussehen kann und was ihnen in schwierigen Zeiten geholfen hat.</p>
                 <span>Ein Beitrag zu mehr Verständnis und Mut.</span>
                 <h1>Einblicke aus unterschiedlichen Perspektiven</h1>
@@ -40,8 +65,8 @@
 
             <section class="testimonial-betroffene">
                 <div>
-                    <p class="quote">&bdquo;Es ist nicht immer einfach, Unterstützung zuzulassen – aber genau das hat mir geholfen, nicht aufzugeben.&ldquo;</p>
-                    <span>Sabine, im Alter von 42 Jahren mit Brustkrebs diagnostiziert</span>
+                    <p class="quote">&bdquo;Jede Nachricht bedeutet unglaublich viel!&ldquo;</p>
+                    <span>Elena, Brustkrebs-Patientin</span>
                 </div>
 
                 <div class="perspektive">
@@ -49,16 +74,41 @@
                         <h2>Aus der Sicht einer Betroffenen</h2>
                     </div>
                     <div class="section text">
-                        <p>&bdquo;Als ich meine Diagnose erhielt, war das ein Schock. Doch im Laufe der Zeit habe ich gelernt, wie wichtig es ist, Hilfe anzunehmen und sich mit anderen Betroffenen auszutauschen. Besonders wertvoll waren Gespräche mit Menschen, die verstanden haben, wie ich mich fühle.&ldquo;
+                        <p>&bdquo;Ich habe selbst einen Knoten in meiner Brust ertastet. Zwei Tage später bin ich zu meinem Gynökolgen gegangen. Eine
+                            Woche später habe ich die defnitive Diagnose erhalten. Die Anfangszeit, in der man in der Luft hängt und unfassbar viele Termine hat, was sehr schwer. <br>
+                            Ich habe meiner Ärztin viele Fragen gestellt und ziemlich schnell einen Termin bei einer Psychoonkologin erhalten!
+                            Momentan habe ich mit leichter Übelkeit und Schwindel zu kämpfen. Draussen spazieren gehen, hilft sehr.&ldquo;
                             <br> <br>
-                            Sabine, 45 Jahre alt, erhielt vor drei Jahren die Diagnose Brustkrebs. Nach Operation und Chemotherapie hat sie gelernt, wie wichtig der Austausch mit anderen Betroffenen und das Annehmen von Hilfe für ihre Genesung war.</p>
+                            Bei Elena, wurde bereits mit 22 Jahren Brustkrebs diagnostiziert. Die Unterstützung durch ihr soziales Netzwerk und ihre Psychoonkologin empfand sie als besonders hilfreich.
+                            Von Aussenstehenden wünscht sie sich ein offenes Ohr und keine Scheu sich zu melden. Jede Nachricht bedeutet unglaublich viel!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonial-betroffene">
+                <div>
+                    <p class="quote">&bdquo;Die Familie war für mich in dieser Zeit sehr wichtig.&ldquo;</p>
+                    <span>Brigitte, Brustkrebs-Patientin</span>
+                </div>
+
+                <div class="perspektive">
+                    <div class="section title">
+                        <h2>Aus der Sicht einer Betroffenen</h2>
+                    </div>
+                    <div class="section text">
+                        <p>&bdquo;Ich glaube jeder muss seinen Weg selber finden wie er mit so etwas umgeht. Ich habe nichts gegoogelt und keine Zeit mit hadern verbracht und mir mir immer positive und Lebensbejahende Menschen ausgesucht die mich umgeben.
+                            Mittlerweile bin ich geheilt und jeden Tag dankbar dafür. Dankbar dass ich in so guten Händen aufgehoben war
+                            während der Krankheitszeit.
+                            Diese tiefe Dankbarkeit begleitet mich jeden Tag.&ldquo;
+                            <br> <br>
+                            Bei Brigitte, wurde im Alter von 50 Jahren Brustkrebs diagnostiziert. Nach Operation, Bestrahlung und Chemotherapie ist sie nun, fünf Jahre später, geheilt.</p>
                     </div>
                 </div>
             </section>
 
             <section class="testimonial-angehoerige">
                 <div>
-                    <p class="quote">&bdquo;Die Hoffnung nicht verlieren, dranbleiben und weiterkämpfen&ldquo;</p>
+                    <p class="quote">&bdquo;Die Hoffnung nicht verlieren, dranbleiben und weiterkämpfen.&ldquo;</p>
                     <span>Valentin, Sohn einer Brustkrebs-Patientin</span>
                 </div>
 
@@ -79,47 +129,102 @@
 
             <section class="testimonial-fachpersonal">
                 <div>
-                    <p class="quote">&bdquo;Empathie, Offenheit und ein wertschätzender Umgang sind fast genauso wichtig wie die richtige Therapie.&ldquo;</p>
-                    <span>Dr. med. Taverna, Chefarzt Onkologie/Hämatologie Spital Thurgau AG</span>
+                    <p class="quote">&bdquo;Nützen Sie die Zeit. Verbringen sie so viel Zeit wie möglich mit Ihren Nächsten.&ldquo;</p>
+                    <span>C., Onkologe</span>
                 </div>
                 <div class="perspektive">
                     <div class="section title">
                         <h2>Aus der Sicht eines Onkologen</h2>
                     </div>
                     <div class="section text">
-                        <p>&bdquo;In meiner Arbeit sehe ich täglich, wie wichtig ein starkes Umfeld für den Heilungsprozess ist. Betroffene brauchen medizinische, aber auch emotionale Unterstützung, um die Herausforderungen der Erkrankung zu bewältigen.&ldquo;
+                        <p>&bdquo;Für die Betroffenen ist es wichtig, in schwierigen Situationen Menschen zu haben, die da sind, wenn man sie braucht. <br>
+                            Es ist eine riesiger Einschnitt ins Leben, der völlig unerwartet kommt. <br>
+                            Als besonders herausfordernd empfinde ich die Ungewissheit. Die Betroffenen und die Angehörigen wissen nicht, was auf sie zukommt. Das löst grosse Ängste aus.
+                            Auch die Nebenwirkungen der Therapie wie Übelkeit, Fatigue, verändertes Körperbild etc. erlebe ich als grosse Herausforderung.<br>
+                            Wichtig ist eine ehrliche und umfassende Information über die Krankheitssituation und die Therapiemöglichkeiten.
+                            Wichtig ist, dass man versucht, auch in schwierigen Situationen Hoffnung zu vermitteln.&ldquo;
                             <br> <br>
-                            Dr. med. Christian Taverna ist Chefarzt für Onkologie und Hämatologie und hat über 15 Jahre Erfahrung in der Behandlung von Brustkrebs. Er setzt sich dafür ein, Betroffenen und Angehörigen nicht nur medizinisch, sondern auch emotional beizustehen.</p>
+                            C. begleitet Betroffene und Angehörige als Onkologe.
+                            Hierbei schöpfen sie die medikamentösen Massnahmen aus.
+                            Sie bieten Zeit für Gespräche. Sie bemühen sich, erreichbar zu sein.
+                            Falls gewünscht stehen weitere Unterstützer wie Psycho-Onkologinnen oder Seelsorgerinnen zur Verfügung.</p>
                     </div>
                 </div>
             </section>
 
-
-            <div class="canvas particles">
-                <canvas class="webgl"></canvas>
-            </div>
-
+            <section class="testimonial-fachpersonal">
+                <div>
+                    <p class="quote">&bdquo;Immer an der Hoffnung auf Heilung festhalten.&ldquo;</p>
+                    <span>Y., Gynäkologin</span>
+                </div>
+                <div class="perspektive">
+                    <div class="section title">
+                        <h2>Aus der Sicht einer Gynäkolgin</h2>
+                    </div>
+                    <div class="section text">
+                        <p>&bdquo;Die Zeit der Ungewissheit, während des Wartens auf die Befunde erlebe ich als besonders grosse Herausforderung. Ebenso den Haarausfall bei der Chemo und generell das Tragen / Ertragen des Schicksals respektive der Dauertherapie, wenn keine Heilung mehr möglich ist.
+                            <br>
+                            Der Umgang mit der Diagnose ist sehr unterschiedlich - je positiver die Patientin denkt oder eingestellt ist (trotz schwieriger Diagnose!), je besser die Lebensqualität.
+                            Für die Lebensqualität ist Hoffnung auf Heilung oder positives Denken grundsätzlich extrem wichtig. Es inspiriert mich, wenn betroffene Frauen das Leben trotz der Diagnose und Therapie geniessen können! 
+                            <br>Ich wünsche mir mehr Zufriedenheit und Dankbarkeit, insbesondere wenn man nicht mit Brustkrebs oder einer anderen Krebsdiagnose konfrontiert ist.&ldquo;
+                            <br> <br>
+                            Als Gynäkologin begleitet Y. Betroffene bei der Diagnose und während der Erkrankung. Als besonders wichtig empfindet sie neben schulmedizinischen auch paramedizinische, ergänzende Behandlungsoptionen anzubieten (Iscador,TCM, onkologische Gesprächstherapie, Bewegungstherapie, Yoga usw).</p>
+                    </div>
+                </div>
+            </section>
     </main>
 
-    <footer>
-        <p>Design & Development by Kim | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+    <footer class="show-initial">
+        <!-- Audio -->
+        <div class="audio">
+            <audio id="backgroundaudio" autoplay loop muted>
+                <source src="./audio/MP Score Piano.mp3" type="audio/mpeg">
+                <source src="./audio/MP Score Piano.wav" type="audio/wav">
+              Your browser does not support the audio element.
+              </audio>
+              <a onClick="togglePlay()">
+                <div class="switch">
+                  <div class="equalizer">
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                  </div>
+                </div>
+                </a>                    
+        </div>
+
+        <div class="to-top" id="to-top">
+            <a href="#top">
+                <img src="./images/ArrowUp.svg" alt="">
+            </a>
+        </div>
     </footer>
     
     
+    
     <!-- Script -->
-    <script type="module" src="./script.js"></script>
+    <script defer type="module" src="./animation.js"></script>
 
     <script>
         // Navbar
         function toggleNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.toggle('nav-active')
+            navBg.style.display = 'block';
         }
     
         // Close nav
         function closeNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.remove('nav-active')
+            navBg.style.display = 'none';
         }
     
         // Navigate to id and close nav
@@ -143,6 +248,44 @@
                 }
             })
         })
+
+
+                // Audio
+                var myAudio = document.getElementById("backgroundaudio");
+        var isPlaying = false;
+
+        function togglePlay() 
+        {
+            if (isPlaying) {
+                myAudio.pause(); // Pause the audio
+            } else {
+                myAudio.muted = false; 
+                myAudio.play(); // Play the audio
+            }
+            isPlaying = !isPlaying; // Toggle the play state
+        }
+
+        myAudio.onplaying = function() {
+        isPlaying = true;
+        };
+        myAudio.onpause = function() {
+        isPlaying = false;
+        };
+
+        //animated speaker
+        var btn = document.getElementsByClassName('switch');
+
+        for (var x = 0; x < btn.length; x++){
+        ( function(_x){
+            btn[_x].addEventListener('click', function(){
+            if (btn[_x].classList.contains('mute')){
+                btn[_x].classList.remove('mute');
+            } else {
+                btn[_x].classList.add('mute');
+            }
+            });
+        })(x);
+        }
     </script>
     
 </body>

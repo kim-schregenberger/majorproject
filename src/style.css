@@ -27,36 +27,92 @@ body
     position: relative;
     z-index: 1;
 
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 0rem 3rem;
     background-color: #211d20;
     
     /* Font */
     color: white;
     font-family: "halyard-text", sans-serif;
     text-align: start;
+    
+}
+
+.interact
+{
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    padding: 1rem;
+    margin-bottom: -1rem;
+    margin-right: -1rem;
+    overflow: visible;
+}
+
+@font-face {
+    font-family: "halyard-text";
+    src: url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+         url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+         url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 
+.bg-container img {
+    position: fixed;
+    width: 150%;  /* Make the image bigger so edges are always hidden */
+    height: 150%;
+    object-fit: cover;
+    object-position: right 79%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: -3;
+    filter: blur(30px);
+    transition: transform 1s ease-in-out, object-position 2s ease-in-out; 
+}
+
+.bg-container.move img {
+    width: 150%;
+    height: 150%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    object-fit: cover;
+    animation: moveUpDown 5s ease-in-out infinite alternate;
+}
+
+@keyframes moveUpDown {
+    0% { transform: translate(-50%, -50%) translateY(0); }  /* Default position */
+    50% { transform: translate(-50%, -50%) translateY(-8rem); }  /* Move down */
+    100% { transform: translate(-50%, -50%) translateY(0); }  /* Move back up */
+}
 
 
 /* 02: Header, Footer */
 header, footer
 {
     height: 50px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
+
+
 
 /* Nav */
 .navbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     color: white;
     position: relative;
     z-index: 20;
+
+
 }
 .menu-btn {
     cursor: pointer;
@@ -67,23 +123,40 @@ header, footer
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #211d20;
+    background-color: #35303d;
     display: none;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
     z-index: 20;
 }
-.nav-overlay a {
+.nav-overlay a, .nav-overlay p {
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
-    margin: 1rem 0;
+    font-size: 1.3rem;
+    margin: 0.2rem 0;
     display: block;
     padding: 0rem 3rem;
 }
+.nav-overlay p
+{
+    color: #C39DB7;
+    font-size: 1rem;
+    padding: 0rem 3rem 0.5rem 3rem;
+}
+.nav-overlay p.navothets
+{
+    color: #C39DB7;
+    font-size: 1rem;
+    padding: 2rem 3rem 0.5rem 3rem;
+}
 .nav-overlay a:hover {
+    color: #C39DB7;
+}
+a:hover {
+    color: #C39DB7;
+}
+li:hover {
     color: #C39DB7;
 }
 .nav-active {
@@ -99,13 +172,136 @@ header, footer
 }
 .logo-overlay.logo a{
     position: absolute;
-    top: 1.8rem;
-    left: 0rem;
-    font-size: 16px;
+    top: 2.2rem;
+}
+a.impressum
+{
+    margin-top: 3rem;
+    margin-bottom: -3rem;
+    font-size: 1rem;
+}
+
+#navBg {
+    display: none; /* Initially hidden */
+    z-index: -20;
+}
+
+.bg-container-nav img {
+    position: fixed;
+    width: 150%;  /* Make the image bigger so edges are always hidden */
+    height: 150%;
+    object-fit: cover;
+    object-position: right 79%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: -3;
+    filter: blur(30px);
 }
 
 
+/* Loading screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+  }
+  
+  #loading-screen .spinner {
+    width: 120px;
+    height: 120px;
+    border-top: 1px solid white;
+    border-radius: 50%;
+    animation: spin 5s linear infinite;
+    position: absolute;
+  }
 
+
+  #enter-button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border-color: white;
+    border: none;
+    border: 1px solid rgb(195, 157, 183);
+    color: white;
+    background-color: transparent;
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: background-color 0.3s, opacity 0.3s;
+    position: absolute;
+  }
+  
+  #enter-button.enabled {
+    cursor: pointer;
+    opacity: 1;
+    /* background-color: #c39db748; */
+    /* background-color: rgba(195, 157, 183, 0.33); */
+    background-color: #c39db749;
+    border: 1px solid white;
+  }
+  
+  #enter-button.enabled:hover {
+    /* background-color: rgba(195, 157, 183, 0.402); */
+    background-color: #c39db7;
+    border: 1px solid white;
+  }
+  
+  
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+  
+
+.loading-content
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+}
+
+.loading-content p
+{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 100%;
+    padding: 2rem;
+    position: absolute;
+}
 
 
 
@@ -116,6 +312,7 @@ h1
     font-weight: 300;
     line-height: 95%;
     padding: 1rem 0rem;
+    font-family: "halyard-text book", sans-serif;
 }
 h2, p.quote
 {
@@ -123,24 +320,46 @@ h2, p.quote
     font-weight: 300;
     line-height: 95%;
     padding: 1rem 0rem;
-    font-family: "halyard-text", sans-serif;
+    font-family: "halyard-text book", sans-serif;
 }
 p
 {
     font-size: 16px;
     font-weight: 300;
     line-height: 100%;
-    font-family: "inter", sans-serif;
+    line-height: auto;
+    letter-spacing: 0%;
+    font-family: "inter regular", sans-serif;
     padding-bottom: 1rem;
 }
-span, span a
+span
 {
     font-size: 16px;
     font-weight: 300;
-    line-height: 100%;
-    font-family: "halyard-text", sans-serif;
-    color: #C39DB7;
+    line-height: auto;
+    /* font-family: "halyard-text book", sans-serif; */
+    font-family: "inter regular", sans-serif;
+    color: #B995AE;
+    /* color: #a58b9d; */
+}
 
+a, button
+{
+    font-size: 16px;
+    font-weight: 300;
+    line-height: auto;
+    font-family: "inter regular", sans-serif;
+    color: white;
+}
+
+button
+{
+    font-size: 12px;
+}
+
+#section-0 a
+{
+    color: #B995AE;
 }
 
 
@@ -153,8 +372,8 @@ span, span a
     left: 0; 
     width: 100vw; 
     outline: none;
-    background-color: rgba(245, 245, 245, 0.132);
     z-index: -2;
+    background-blend-mode: hue;
 }
 
 
@@ -162,29 +381,58 @@ canvas {
     display: block;
 }
 
+.hero
+{
+    margin-top: -2rem;
+}
 
+
+.scrollpos
+{
+    display: none;
+    position: fixed;
+    left: 3.5rem;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.scrollpos div
+{
+    width: 8px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.365);
+    margin: 0.5rem;
+}
 
 
 /* 05: Overlay */
 .grain
 {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #211d2084;
+    width: 150%;
+    height: 150%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background-color: #0c0a0c61;
     z-index: -1;
+    filter: brightness(0.2);
 }
-
-
-
-
 
 ul
 {
     padding-bottom: 1rem;
 }    
+
+li
+{
+    cursor: pointer;
+}
+
+li p
+{
+    display: none;
+}
 
 .hidden {
     display: none;
@@ -194,14 +442,12 @@ ul
 .canvas.stages.visible {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding-top: 4rem;
-    /* background-color: #ff54d455; */
+    padding-top: 2rem;
 }    
 
 .canvas.stages {
@@ -211,6 +457,7 @@ ul
 
 .canvas.stages div
 {
+    width: 100%;
     padding: 2rem 3rem;
     position: relative;
 }    
@@ -222,6 +469,42 @@ ul
     height: 100vh;
 }    
 
+
+
+canvas
+{
+    filter: brightness(1);
+}
+
+#stage-description
+{
+    min-height: 14vh;
+}
+
+.horizontal-tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+    width: 80vw;
+    pointer-events: all;
+}
+
+.horizontal-tabs li {
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0.5rem 0rem;
+    padding-right: 1rem;
+    color: white;
+    border-bottom: solid 1px white;
+}
+
+.horizontal-tabs::-webkit-scrollbar {
+    display: none;
+}
 
 
 /* Section Mobile */
@@ -252,14 +535,13 @@ section.scroll div, section.info div, section.testimonial div
 main .stages-section
 {
     position: absolute;
+
 }
 
 main .scroll
 {
     position: relative;
 }
-
-
 
 /* Hide when Stages active */
 .show-initial
@@ -285,15 +567,35 @@ main .scroll
 
 
 /* Interact with canvas through html */
-.stages-section, .grain {
+.stages-section.active, .grain.active {
     pointer-events: none;
 }
 
-.go-back
+.grain.active
+{
+    background-color: #0c0a0c4c;
+}
+
+
+.go-back, li
 {
     pointer-events: all;
 }
 
+.go-back
+{
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+}
+
+.go-back-cross
+{
+    position: fixed;
+    top: 3rem;
+    right: 3rem;
+    pointer-events: all;
+}
 
 
 
@@ -304,7 +606,19 @@ main .scroll
 }
 
 
+.stages-section ul li.active {
+    /* font-weight: bold; */
+    /* text-decoration: underline; */
+    color: #C39DB7;
+    border-bottom: 1px solid #C39DB7;
+}
 
+
+.stages-section ul li.active p{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
 
 
 
@@ -336,7 +650,10 @@ button:hover
     background-color: #c39db78d;
 }
 
-
+.explore.active
+{
+    background-color: #c39db78d;
+}
 
 
 section.cta div ul li
@@ -358,7 +675,10 @@ section.cta div ul li div
 }
 
 
-
+.cta-flex
+{
+    padding-bottom: 1rem;
+}
 
 
 
@@ -372,6 +692,19 @@ section.cta div ul li div
     left: 0px;
     /* width: 100%; */
 }
+
+
+.to-top img
+{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    height: 20px;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
 
 .backgroundaudio {
     height: 0;
@@ -440,20 +773,14 @@ section.cta div ul li div
   @keyframes sound{0%{height:3px}100%{height:18px}}
 
 
+  .testimonial-betroffene, .testimonial-angehoerige, .testimonial-fachpersonal
+  {
+      height: auto;
+      padding-bottom: 5rem;
+  }
 
 
 
-
-
-/* .icon
-{
-    position: fixed;
-    bottom: 25px;
-    right: 50px;
-    font-size: 1rem;
-    color: white;
-}
- */
 
 
 
@@ -467,36 +794,132 @@ section.cta div ul li div
     /* 01: HTML, Body */
     body
     {
-        padding: 2rem 6rem;
+        padding: 2rem 6rem 0rem 6rem;
         background-color: #211d20;
     }
+
+    .interact
+    {
+        position: fixed;
+        bottom: 2rem;
+        right: 6rem;
+        padding: 1rem;
+        margin-bottom: -1rem;
+        margin-right: -1rem;
+        overflow: visible;
+    }
+
+
+    .close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 6rem;
+    }
+
+    .go-back-cross
+    {
+        position: fixed;
+        top: 2rem;
+        right: 6rem;
+        pointer-events: all;
+    }
+
+
+    .logo-overlay.logo a{
+        position: absolute;
+        top: 1.7rem;
+    }
+
+    .nav-overlay a, .nav-overlay p {
+        font-size: 1.7rem;
+        margin: 0.2rem 0;
+        padding: 0rem 6rem;
+    }
+    .nav-overlay p
+    {
+        font-size: 1rem;
+        padding: 0rem 6rem 0.5rem 6rem;
+    }
+    .nav-overlay p.navothets
+    {
+        font-size: 1rem;
+        padding: 2rem 6rem 0.5rem 6rem;
+    }
+    a.impressum
+    {
+        margin-top: 2rem;
+        margin-bottom: -2rem;
+        font-size: 1rem;
+    }
+
+
+    .equalizer
+    {
+        margin-left: 6rem;
+    }
+
+    .to-top img
+    {
+        margin-right: 6rem;
+    }
+
     
     h1
     {
         font-size: 80px;
         font-weight: 300;
-        line-height: 95%;
+        line-height: 100%;
+        font-family: "halyard-text book", sans-serif;
     }
     h2, p.quote
     {
-        font-size: 40px;
+        font-size: 50px;
         font-weight: 300;
         line-height: 95%;
+        /* line-height: 60%; */
     }
     p
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: 95%;
+        line-height: auto;
+        letter-spacing: 0%;
+        font-family: "inter regular", sans-serif;
     }
     span
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: 95%;
+        line-height: auto;
+        /* font-family: "halyard-text", sans-serif; */
+        font-family: "inter regular", sans-serif;
         color: #C39DB7;
     }
 
+    a, button
+    {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: auto;
+        /* font-family: "halyard-text", sans-serif; */
+        font-family: "inter regular", sans-serif;
+        color: white;
+    }
+
+    button
+    {
+        font-size: 14px;
+    }
+
+    
+    li
+    {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: auto;
+        letter-spacing: 0%;
+        font-family: "inter regular", sans-serif;
+    }
 
     /* 02: Header, Footer */
     /* 03: Fonts */
@@ -510,23 +933,6 @@ section.cta div ul li div
     }
 
 
-    .canvas.stages
-    {
-        align-items: center;
-    }
-
-    .canvas.stages div
-    {
-        padding-left: 50%;
-        padding-top: 0rem;
-    }
-
-    .canvas.stages div h2
-    {
-        padding-top: 0rem;
-    }
-
-
 }
 
 
@@ -537,9 +943,80 @@ section.cta div ul li div
         /* 01: HTML, Body */
         body
         {
-            padding: 2rem 10rem;
+            padding: 2rem 10rem 0rem 10rem;
             background-color: #211d20;
         }
+
+        .logo-overlay.logo a{
+            position: absolute;
+            top: 1.55rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 10rem;
+        }
+
+        .go-back-cross
+        {
+            position: fixed;
+            top: 2rem;
+            right: 10rem;
+            pointer-events: all;
+        }
+
+
+        .interact
+        {
+            position: fixed;
+            bottom: 2rem;
+            right: 10rem;
+            padding: 1rem;
+            margin-bottom: -1rem;
+            margin-right: -1rem;
+            overflow: visible;
+        }    
+
+        .nav-overlay a, .nav-overlay p {
+            font-size: 1.8rem;
+            margin: 0.2rem 0;
+            padding: 0rem 10rem;
+        }
+        .nav-overlay p
+        {
+            font-size: 1rem;
+            padding: 0rem 10rem 0.5rem 10rem;
+        }
+        .nav-overlay p.navothets
+        {
+            font-size: 1rem;
+            padding: 0rem 10rem 0.5rem 10rem;
+        }
+        a.impressum
+        {
+            margin-top: 2rem;
+            margin-bottom: -2rem;
+            font-size: 1rem;
+        }
+        .navflex
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .equalizer
+        {
+            margin-left: 10rem;
+        }
+
+        .to-top img
+        {
+            margin-right: 10rem;
+        }
+
 
         /* 02: Header, Footer */
 
@@ -550,6 +1027,7 @@ section.cta div ul li div
             font-size: 100px;
             font-weight: 300;
             line-height: 95%;
+            font-family: "halyard-text book", sans-serif;
         }
         h2, p.quote
         {
@@ -567,15 +1045,36 @@ section.cta div ul li div
         {
             font-size: 20px;
             font-weight: 300;
-            line-height: 95%;
+            line-height: auto;
             color: #C39DB7;
         }
+
+        a, button
+        {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: auto;
+            color: white;
+        }
+
+        button
+        {
+            font-size: 14px;
+        }
+    
+
 
 
 
         /* 04: Canvas */
         /* 05: Overlay */
 
+        .go-back
+        {
+            position: relative;
+            bottom: 0rem;
+            left: 0rem;
+        }
 
 
         /* Erfahrungsberichte */
@@ -601,10 +1100,10 @@ section.cta div ul li div
         {
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: 2rem;
-            height: 85vh;
+            height: auto;
         }
 
         section.cta div.cta-flex,  section.infopage div.cta, section.infopage div.text
@@ -616,6 +1115,11 @@ section.cta div ul li div
         .cta-flex h2, .cta h2
         {   
             padding-top: 0;
+        }
+
+        .end
+        {
+            min-height: 65vh;
         }
 
         section.cta div ul
@@ -657,43 +1161,36 @@ section.cta div ul li div
         }
 
 
-
-
         .canvas.stages div
         {
             padding: 2rem 10rem;
+            padding-left: 50%;
+            padding-top: 0rem;
+            margin-top: -4rem;
         }
 
-        .start p
+
+    
+        .start p, .erfahrung p, .spenden p
         {
             width: 50%;
         }
 
 
-
-    
         .canvas.stages
-{
-    align-items: center;
-}
-
-.canvas.stages div
-{
-    padding-left: 50%;
-    padding-top: 0rem;
-}
-
-.canvas.stages div h2
-{
-    padding-top: 0rem;
-}
+        {
+            align-items: center;
+        }
 
 
-        
+        .canvas.stages div h2
+        {
+            padding-top: 0rem;
+        }
 
-    
-
-
+        .horizontal-tabs {
+            width: 45vw;
+        }
 
 }
 

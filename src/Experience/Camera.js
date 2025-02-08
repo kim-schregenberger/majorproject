@@ -20,21 +20,13 @@ export default class Camera
         this.instance = new THREE.PerspectiveCamera(50, this.sizes.width / this.sizes.height, 0.1, 100)
         this.instance.position.set(-15, 0, 1.5)
         this.scene.add(this.instance)
-
-        // DEBUG
-        // console.log('Camera position:', this.instance.position);
-        // this.instance.position.set(0, 0, 10);
-        // this.instance.lookAt(0, 0, 0);
-        // 
-
-
     }
 
     setControls()
     {
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
-        // this.controls.enabled = false
+        this.controls.enablePan = false
         this.controls.minDistance = 0;
         this.controls.maxDistance = 2000;
     }

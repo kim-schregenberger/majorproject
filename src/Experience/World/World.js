@@ -19,15 +19,16 @@ export default class World {
     }
 
     loadStage(stageNumber) {
-        this.stage.loadStage(stageNumber) // Load a specific stage
+        // Load a specific stage
+        this.stage.loadStage(stageNumber)
     }
 
     update() {
         if (this.stage) {
-            this.stage.update() // Update the stage if necessary
+            this.stage.update()
         }
         if (this.particles) {
-            this.particles.update() // Update particles if necessary
+            this.particles.update()
         }
     }
 }

@@ -3,65 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gemeinsam gegen Brustkrebs. Worte, Gesten, Nähe – sie können mehr bewirken, als wir oft denken. Diese Seite lädt dich ein, zu verstehen und zu unterstützen.">
+    <meta name="description" content="Gemeinsam gegen Brustkrebs. Worte, Gesten, Nähe – sie können mehr bewirken, als wir oft denken. Diese Seite lädt dich ein, zu verstehen und zu unterstützen.">
     <title>Code structuring</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css">
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css"> -->
 </head>
 
 <body>
     <header>
         <!-- NAV -->
         <div class="navbar">
-            <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
+            <div class="logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
             <div class="menu-btn" onclick="toggleNav()">MENU</div>
         </div>
     
         <div class="nav-overlay" id="navOverlay">
-            <div class="logo-overlay logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
-            <div class="close-btn" onclick="toggleNav()">&times;</div>
-            <a href="info.html#betroffene" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
-            <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
-            <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
-            <a href="#" onclick="closeNav()">Spenden</a>
+            <div class="bg-container-nav" id="navBg">
+                <img src="./images/bgimg.webp" alt="">
+            </div>
+            <div class="logo-overlay logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
+            <div class="close-btn" onclick="toggleNav()"><img src="./images/cross.svg" alt="" style="width: 20px; height: 20px;"></div>
+            <div class="navflex">
+                <div>
+                    <p class="navstart">Startseite</p>
+                    <a href="index.html#section-1">Stadium 1</a>
+                    <a href="index.html#section-2">Stadium 2</a>
+                    <a href="index.html#section-3">Stadium 3</a>
+                    <a href="index.html#section-4">Stadium 4</a>
+                </div>
+        
+                <div>
+                    <p class="navothets">Weitere Seiten</p>
+                    <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
+                    <a href="info.html" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
+                    <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
+                    <a href="spenden.html" onclick="closeNav()">Unterstützen</a>
+                </div>
+            </div>
+            <div>
+                <a class="impressum" href="">Impressum und Datenschutz</a>
+            </div>
         </div>
     </header>
 
     <main>
+        <div class="bg-container move">
+            <img src="./images/bgimg.webp" alt="">
+        </div>
+        
             <!-- Add "show-initial" class to grain if don't want it in stages -->
             <div class="grain"></div>
 
             <!-- Sections -->
-            <section class="hero">
-                <p>Deine Unterstützung zählt und wird geschätzt. Setze Dich ein für bessere Heilungschancen. </p>
+            <section class="hero spenden">
+                <p>Deine Unterstützung zählt und wird geschätzt. Setze Dich ein für Prävention und bessere Heilungschancen. </p>
                 <span>Gemeinsam gegen Brustkrebs.</span>
                 <h1>Schenke Hoffnung mit einer Spende</h1>
-                <button class="read-more">Unterstützen</button>
+                <a href="https://participate.krebsliga.ch/Kim-Schregenberger/myevent">
+                    <button class="read-more">Unterstützen
+                    </button>
+                </a>
             </section>
-
-            <div class="canvas particles">
-                <canvas class="webgl"></canvas>
-            </div>
     </main>
 
-    <footer>
-        <p>Design & Development by Kim | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+    <footer class="show-initial">
+        <!-- Audio -->
+        <div class="audio">
+            <audio id="backgroundaudio" autoplay loop muted>
+                <source src="./audio/MP Score Piano.mp3" type="audio/mpeg">
+                <source src="./audio/MP Score Piano.wav" type="audio/wav">
+              Your browser does not support the audio element.
+              </audio>
+              <a onClick="togglePlay()">
+                <div class="switch">
+                  <div class="equalizer">
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                  </div>
+                </div>
+                </a>                    
+        </div>
+
+        <div class="to-top" id="to-top">
+            <a href="#top">
+                <img src="./images/ArrowUp.svg" alt="">
+            </a>
+        </div>
     </footer>
     
     
+    
     <!-- Script -->
-    <script type="module" src="./script.js"></script>
+    <script defer type="module" src="./animation.js"></script>
 
     <script>
         // Navbar
         function toggleNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.toggle('nav-active')
+            navBg.style.display = 'block';
         }
     
         // Close nav
         function closeNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.remove('nav-active')
+            navBg.style.display = 'none';
         }
     
         // Navigate to id and close nav
@@ -85,6 +141,44 @@
                 }
             })
         })
+
+
+                // Audio
+                var myAudio = document.getElementById("backgroundaudio");
+        var isPlaying = false;
+
+        function togglePlay() 
+        {
+            if (isPlaying) {
+                myAudio.pause(); // Pause the audio
+            } else {
+                myAudio.muted = false; 
+                myAudio.play(); // Play the audio
+            }
+            isPlaying = !isPlaying; // Toggle the play state
+        }
+
+        myAudio.onplaying = function() {
+        isPlaying = true;
+        };
+        myAudio.onpause = function() {
+        isPlaying = false;
+        };
+
+        //animated speaker
+        var btn = document.getElementsByClassName('switch');
+
+        for (var x = 0; x < btn.length; x++){
+        ( function(_x){
+            btn[_x].addEventListener('click', function(){
+            if (btn[_x].classList.contains('mute')){
+                btn[_x].classList.remove('mute');
+            } else {
+                btn[_x].classList.add('mute');
+            }
+            });
+        })(x);
+        }
     </script>
     
 </body>

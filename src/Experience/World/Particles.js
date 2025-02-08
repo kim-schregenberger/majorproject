@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { GPUComputationRenderer } from 'three/examples/jsm/misc/GPUComputationRenderer.js'
-import GUI from 'lil-gui'
+// import GUI from 'lil-gui'
 import gsap from 'gsap'
 
 import particlesVertexShader from '../../../static/shaders/particles/vertex.glsl'
@@ -46,21 +46,21 @@ export default class Particles {
     }
 
     isMobile() {
-        return window.innerWidth <= 768; // Treat screens 768px or smaller as mobile
+        return window.innerWidth <= 1024;
     }
     
     applyTransformationsToChildren() {
-        const isMobile = this.isMobile(); // Detect device type
+        const isMobile = this.isMobile();
     
         this.gltfChildren.forEach((child) => {
             if (isMobile) {
                 // Mobile-specific transformations
-                child.scale.set(1, 1, 1); // Reset scale
-                child.position.set(0, 0, 0); // Default position
+                child.scale.set(1, 1, 1); 
+                child.position.set(0, 0, 0); 
             } else {
                 // Desktop-specific transformations
-                child.scale.set(2, 2, 2); // Scale uniformly
-                child.position.set(0, 0, -4); // Position further back
+                child.scale.set(2, 2, 2); 
+                child.position.set(0, 0, -4);
             }
     
             // Update matrix to apply transformations
@@ -68,9 +68,12 @@ export default class Particles {
     
             // Bake transformations into the geometry
             if (child.geometry) {
-                child.geometry.applyMatrix4(child.matrix); // Apply the transformation matrix to the geometry
-                child.geometry.computeBoundingBox(); // Recompute bounding box (optional)
-                child.geometry.computeBoundingSphere(); // Recompute bounding sphere (optional)
+                // Apply the transformation matrix to the geometry
+                child.geometry.applyMatrix4(child.matrix);
+                // Recompute bounding box
+                child.geometry.computeBoundingBox();
+                // Recompute bounding sphere
+                child.geometry.computeBoundingSphere();
             }
         });
     }
@@ -79,10 +82,11 @@ export default class Particles {
     createParticles(index) 
     {
     const baseGeometry = {};
-    baseGeometry.instance = this.gltfChildren[index].geometry; // Select geometry by index
+    // Select geometry by index
+    baseGeometry.instance = this.gltfChildren[index].geometry;
     baseGeometry.count = baseGeometry.instance.attributes.position.count
 
-    // Ensure the geometry is reset to a fixed scale before assigning it
+    // reset geometry to fixed scale before assigning
     baseGeometry.instance.scale(1, 1, 1)
 
     const gpgpu = {};
@@ -113,10 +117,10 @@ export default class Particles {
         uTime: new THREE.Uniform(0),
         uDeltaTime: new THREE.Uniform(0),
         uBase: new THREE.Uniform(baseParticlesTexture),
-        // Set flow field uniforms to active states by default
-        uFlowFieldInfluence: new THREE.Uniform(2.0), // Max influence at start
-        uFlowFieldStrength: new THREE.Uniform(1.0),  // Max strength at start
-        uFlowFieldFrequency: new THREE.Uniform(0.1), // Reasonable starting frequency
+        // Set flow field uniforms
+        uFlowFieldInfluence: new THREE.Uniform(2.0),
+        uFlowFieldStrength: new THREE.Uniform(1.0), 
+        uFlowFieldFrequency: new THREE.Uniform(0.1),
     };
 
     gpgpu.computation.init();
@@ -151,7 +155,8 @@ export default class Particles {
         vertexShader: particlesVertexShader,
         fragmentShader: particlesFragmentShader,
         uniforms: {
-            uSize: new THREE.Uniform(0.065),
+            // Particles size
+            uSize: new THREE.Uniform(0.055),
             uResolution: new THREE.Uniform(
                 new THREE.Vector2(
                     this.experience.sizes.width * this.experience.sizes.pixelRatio,
@@ -202,11 +207,7 @@ export default class Particles {
         return t * t * (3 - 2 * t); 
     }
     
-    getScrollProgress(section) {
-        // const rect = section.getBoundingClientRect(); 
-        // const viewportHeight = window.innerHeight;
-        // const progress = (rect.top - viewportHeight / 2) / rect.height; 
-       
+    getScrollProgress(section) {     
         const rect = section.getBoundingClientRect()
         const viewportHeight = window.innerHeight;
         const middleOfSection = rect.top + rect.height / 2
@@ -226,11 +227,14 @@ export default class Particles {
     
 
     setScrollObserver() {
+        const scrollSection = document.querySelector('.scroll');
         const sections = document.querySelectorAll('.scroll-section');
+        const hideSections = document.querySelectorAll('.final, .end, .footer');
+        const canvas = document.querySelector('.webgl');
     
         const observerOptions = {
-            root: null, // The viewport
-            rootMargin: '0px 0px -25% 0px', // Adjusts to trigger when the section reaches the middle of the viewport
+            root: null,
+            rootMargin: '0px 0px -25% 0px',
         };
     
         const observer = new IntersectionObserver((entries) => {
@@ -239,31 +243,35 @@ export default class Particles {
                     const index = Array.from(sections).indexOf(entry.target);
     
                     if (index !== this.currentModelIndex) {
-                        // Start transition by briefly boosting flow field values
+                        // Start transition by boosting flow field values
                         const oldGpgpu = this.gpgpu;
                         if (oldGpgpu) {
                             gsap.to(oldGpgpu.particlesVariable.material.uniforms.uFlowFieldStrength, { value: 2.0, duration: 0.5 });
                             gsap.to(oldGpgpu.particlesVariable.material.uniforms.uFlowFieldFrequency, { value: 0.2, duration: 0.5 });
                             gsap.to(oldGpgpu.particlesVariable.material.uniforms.uFlowFieldInfluence, { value: 2.0, duration: 0.5 });
                         }
-    
-                        // Create new particles after transition
+                        
+                        // Fade out the canvas before changing the model
+                        gsap.to(canvas, { opacity: 0, duration: 0.5, onComplete: () => {
+                        // Change model after opacity is 0
                         setTimeout(() => {
-                            this.createParticles(index); // Update model
+                            this.createParticles(index);
                             this.currentModelIndex = index;
-                        }, -1000); // Ensure smooth transition timing
+                        }, -500);
+
+                        // Fade the canvas back in after changing the model
+                        gsap.to(canvas, { opacity: 1, duration: 0.5 });
+                    }});
                     }
                 }
             });
         }, observerOptions);
     
-    
-        
         sections.forEach((section) => observer.observe(section));
     
         window.addEventListener('scroll', () => {
             sections.forEach((section, index) => {
-                const progress = this.getScrollProgress(section); // Get the scroll progress
+                const progress = this.getScrollProgress(section);
         
                 if (index === this.currentModelIndex) {
                     const strength = THREE.MathUtils.lerp(10, 0.0, progress);
@@ -274,18 +282,49 @@ export default class Particles {
         
                     const influence = THREE.MathUtils.lerp(3.0, 0.0, progress);
                     this.gpgpu.particlesVariable.material.uniforms.uFlowFieldInfluence.value = influence;
-        
-                    // Remove opacity control
                 }
             });
         }); 
+
+        const hideObserver = new IntersectionObserver((entries) => {
+            let shouldHide = false;
+    
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // If any hide section is visible, set to true
+                    shouldHide = true;
+                }
+            });
+    
+            if (shouldHide) {
+                this.fadeOutCanvas();
+            } else {
+                this.fadeInCanvas();
+            }
+        }, observerOptions);
+    
+        // Observe all hide sections
+        hideSections.forEach((section) => hideObserver.observe(section));        
     }
 
+    fadeOutCanvas() {
+        const canvas = document.querySelector('.webgl');
+        if (canvas.style.opacity === "0") return; // Prevent redundant animation
+        gsap.to(canvas, { opacity: 0, duration: 0.5 });
+    }
+
+    fadeInCanvas() {
+        const canvas = document.querySelector('.webgl');
+        if (canvas.style.opacity === "1") return; // Prevent redundant animation
+        gsap.to(canvas, { opacity: 1, duration: 0.5 });
+    }
+
+
+    
     update() 
     {
         if (this.particlesPoints) {
-            // Optional: Add subtle animations like pulsating or drifting particles
-            // this.particlesPoints.rotation.y += 0.001;  // Example: slow rotation
+            // this.particlesPoints.rotation.y += 0.001; 
         }
     }
 
@@ -308,14 +347,14 @@ export default class Particles {
                 }
             });
             this.scene.remove(this.particlesPoints);
-            this.particlesPoints = null;  // Clear reference
+            this.particlesPoints = null;
             console.log('Particles scene destroyed.');
         }
     }
     
     init() {
         console.log('Reinitializing particles...');
-        this.setModel();  // This function creates the particles scene
+        this.setModel();
         console.log('Particles scene initialized.');
     }
     

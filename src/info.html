@@ -3,31 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gemeinsam gegen Brustkrebs. Worte, Gesten, Nähe – sie können mehr bewirken, als wir oft denken. Diese Seite lädt dich ein, zu verstehen und zu unterstützen.">
+
     <title>Code structuring</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css">
 </head>
 
-<body>
+<body class="body-info">
     <header>
         <!-- NAV -->
         <div class="navbar">
-            <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
+            <div class="logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
             <div class="menu-btn" onclick="toggleNav()">MENU</div>
         </div>
     
         <div class="nav-overlay" id="navOverlay">
-            <div class="logo-overlay logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px;"></a></div>
-            <div class="close-btn" onclick="toggleNav()">&times;</div>
-            <a href="#betroffene" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
-            <a href="#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
-            <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
-            <a href="spenden.html" onclick="closeNav()">Spenden</a>
+            <div class="bg-container-nav" id="navBg">
+                <img src="./images/bgimg.webp" alt="">
+            </div>
+            <div class="logo-overlay logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
+            <div class="close-btn" onclick="toggleNav()"><img src="./images/cross.svg" alt="" style="width: 20px; height: 20px;"></div>
+            <div class="navflex">
+                <div>
+                    <p class="navstart">Startseite</p>
+                    <a href="index.html#section-1">Stadium 1</a>
+                    <a href="index.html#section-2">Stadium 2</a>
+                    <a href="index.html#section-3">Stadium 3</a>
+                    <a href="index.html#section-4">Stadium 4</a>
+                </div>
+        
+                <div>
+                    <p class="navothets">Weitere Seiten</p>
+                    <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
+                    <a href="info.html" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
+                    <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
+                    <a href="spenden.html" onclick="closeNav()">Unterstützen</a>
+                </div>
+            </div>
+            <div>
+                <a class="impressum" href="">Impressum und Datenschutz</a>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Add "show-initial" class to grain if don't want it in stages -->
+        <div class="bg-container move">
+            <img src="./images/bgimg.webp" alt="">
+        </div>
+
         <div class="grain"></div>
 
             <!-- Sections -->
@@ -35,20 +59,27 @@
                 <div class="cta" id="betroffene">
                     <h2>Unterstützung und Angebote für Betroffene</h2>
                     <ul>
-                        <li><a href="#">Krebsliga Schweiz</a></li>
+                        <li><a href="https://www.krebsliga.ch/beratung-unterstuetzung?_gl=1*1swbcy8*_up*MQ..*_gs*MQ..&gclid=CjwKCAiAtNK8BhBBEiwA8wVt9-J1bEH0OGyuPWDqhkR6ANIZubFntPe4P1W0nykLt7oGQ_V6zPVvlhoCHR4QAvD_BwE">Krebsliga Schweiz: Beratung</a></li>
                         <li><div class="line"></div></li>
-                        <li><a href="#">Look Good Feel Better</a></li>
+                        <li><a href="https://www.krebsliga.ch/agenda?_gl=1*1j1i7tp*_up*MQ..&gclid=CjwKCAiAtNK8BhBBEiwA8wVt9-J1bEH0OGyuPWDqhkR6ANIZubFntPe4P1W0nykLt7oGQ_V6zPVvlhoCHR4QAvD_BwE">Krebsliga Schweiz: Workshops, Treffen</a></li>
                         <li><div class="line"></div></li>
-                        <li><a href="#">Europa Donna Schweiz</a></li>
+                        <li><a href="https://www.pink-ribbon.ch/">Pink Ribbon</a></li>
                         <li><div class="line"></div></li>
-                        <li><a href="#">Selbsthilfe Schweiz</a></li>
+                        <li><a href="https://lgfb.ch/">Look Good Feel Better</a></li>
+                        <li><div class="line"></div></li>
+                        <li><a href="https://www.europadonna.ch/tavola-rosa/">Europa Donna Schweiz: Tavola Rosa</a></li>
+                        <li><div class="line"></div></li>
+                        <li><a href="https://www.selbsthilfeschweiz.ch/shch/de/selbsthilfeangebote/suche.html?submitted=true&search=brustkrebs">Selbsthilfe Schweiz</a></li>
                         <li><div class="line"></div></li>
                     </ul>
                 </div>
                 <div class="text">
-                    <p>Eine Krebsdiagnose stellt das Leben oft auf den Kopf. Umso wichtiger ist es, Zugang zu vertrauenswürdigen Informationen und hilfreichen Angeboten zu haben. Auf dieser Seite finden Sie Links zu Organisationen und Initiativen, die Betroffene in verschiedenen Phasen der Erkrankung unterstützen.
-                        Programme wie Look Good Feel Better helfen, sich trotz der Herausforderungen besser im eigenen Körper zu fühlen, während die Krebsliga umfassende Informationen zu Behandlungsmöglichkeiten, psychologischer Unterstützung und rechtlichen Fragen bereithält.</p>
-                    <span>Nutzen Sie diese Angebote, um sich informiert und begleitet zu fühlen – denn Sie sind nicht allein auf diesem Weg.</span>
+                    <p>Eine Krebsdiagnose stellt das Leben auf den Kopf. Umso wichtiger ist der Zugang zu vertrauenswürdigen Informationen und hilfreichen Angeboten.</p>
+                    <p>Auf dieser Seite finden Sie Links zu Organisationen und Initiativen, die Betroffene in verschiedenen Phasen der Erkrankung unterstützen können.</p>
+                    <p>Die Krebsliga hält umfassende Informationen zu Behandlungsmöglichkeiten, psychologischer Unterstützung und rechtlichen Fragen bereit und bietet Workshops und Treffen an.</p>
+                    <p>Auch Europa Donna Schweiz bietet mit dem Tavola Rosa eine Austauschmöglichkeit für Betroffenen und Angehörige.</p>
+                    <p>Programme wie Look Good Feel Better unterstützen Betroffene dabei, sich trotz verändertem Aussehen wieder besser im eigenen Körper zu fühlen.</p>
+                    <span>Sie sind nicht allein - Es gibt viele Angebote, die Sie während und nach der Krankheit unterstützen können.</span>
                 </div>
             </section>
 
@@ -56,46 +87,78 @@
                 <div class="cta" id="angehörige">
                     <h2>Hilfe und Orientierung für Angehörige</h2>
                     <ul>
-                        <li><a href="#">Krebsliga Schweiz</a></li>
+                        <li><a href="https://www.krebsliga.ch/beratung-unterstuetzung/fuer-angehoerige?_gl=1*908x95*_up*MQ..&gclid=CjwKCAiAtNK8BhBBEiwA8wVt9-J1bEH0OGyuPWDqhkR6ANIZubFntPe4P1W0nykLt7oGQ_V6zPVvlhoCHR4QAvD_BwE">Krebsliga Schweiz: Für Angehörige</a></li>
                         <li><div class="line"></div></li>
-                        <li><a href="#">Europa Donna Schweiz</a></li>
+                        <li><a href="https://www.krebsliga.ch/agenda?_gl=1*1j1i7tp*_up*MQ..&gclid=CjwKCAiAtNK8BhBBEiwA8wVt9-J1bEH0OGyuPWDqhkR6ANIZubFntPe4P1W0nykLt7oGQ_V6zPVvlhoCHR4QAvD_BwE">Krebsliga Schweiz: Workshops, Treffen</a></li>
                         <li><div class="line"></div></li>
-                        <li><a href="#">Selbsthilfe Schweiz</a></li>
+                        <li><a href="https://www.pink-ribbon.ch/">Pink Ribbon</a></li>
+                        <li><div class="line"></div></li>
+                        <li><a href="https://www.europadonna.ch/tavola-rosa/">Europa Donna Schweiz: Tavola Rosa</a></li>
+                        <li><div class="line"></div></li>
+                        <li><a href="https://www.selbsthilfeschweiz.ch/shch/de/selbsthilfeangebote/suche.html?submitted=true&search=brustkrebs">Selbsthilfe Schweiz</a></li>
                         <li><div class="line"></div></li>
                     </ul>
                 </div>
                 <div class="text">
-                    <p>Die Diagnose eines geliebten Menschen betrifft auch das Umfeld. Viele Angehörige fragen sich: Wie kann ich helfen, ohne mich selbst zu überfordern? Welche Unterstützung ist sinnvoll?
-
-                        Hier finden Sie Links zu Anlaufstellen und Programmen, die speziell für Angehörige gedacht sind. Die Krebsliga bietet wertvolle Informationen, wie Sie Betroffene begleiten können, ohne dabei Ihre eigenen Grenzen zu vergessen. Angebote wie Gesprächskreise oder psychosoziale Beratung helfen, den eigenen Umgang mit der Situation zu stärken.</p>
-                    <span>Gemeinsam können wir Betroffene bestmöglich unterstützen – mit Empathie, Offenheit und den richtigen Ressourcen.</span>
+                    <p>Die Diagnose eines geliebten Menschen betrifft auch das Umfeld. Viele Angehörige fragen sich: Wie kann ich helfen? Welche Unterstützung ist sinnvoll?</p>
+                    <p>Hier finden Sie Links zu Anlaufstellen und Programmen, die speziell für Angehörige gedacht sind. Die Krebsliga bietet wertvolle Informationen, wie Sie Betroffene begleiten können.</p>
+                    <p>Angebote wie Gesprächskreise oder psychosoziale / psychoonkologische Beratung helfen, den eigenen Umgang mit der Situation zu stärken.</p>
+                    <span>Gemeinsam können wir dazu beitragen, dass sich Betroffene verstanden und begleitet fühlen.</span>
                 </div>
             </section>
-
-            <div class="canvas particles">
-                <canvas class="webgl"></canvas>
-            </div>
     </main>
 
-    <footer>
-        <p>Design & Development by Kim | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+    <footer class="show-initial">
+        <!-- Audio -->
+        <div class="audio">
+            <audio id="backgroundaudio" autoplay loop muted>
+                <source src="./audio/MP Score Piano.mp3" type="audio/mpeg">
+                <source src="./audio/MP Score Piano.wav" type="audio/wav">
+              Your browser does not support the audio element.
+              </audio>
+              <a onClick="togglePlay()">
+                <div class="switch">
+                  <div class="equalizer">
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                      <div class="equalizer__bar"></div>
+                  </div>
+                </div>
+                </a>                    
+        </div>
+
+        <div class="to-top" id="to-top">
+            <a href="#top">
+                <img src="./images/ArrowUp.svg" alt="">
+            </a>
+        </div>
     </footer>
     
     
+    
     <!-- Script -->
-    <script type="module" src="./script.js"></script>
+    <script defer type="module" src="./animation.js"></script>
 
     <script>
         // Navbar
         function toggleNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.toggle('nav-active')
+            navBg.style.display = 'block';
         }
     
         // Close nav
         function closeNav() {
             const navOverlay = document.getElementById('navOverlay')
+            const navBg = document.getElementById('navBg');
+
             navOverlay.classList.remove('nav-active')
+            navBg.style.display = 'none';
         }
     
         // Navigate to id and close nav
@@ -119,6 +182,44 @@
                 }
             })
         })
+
+
+                // Audio
+                var myAudio = document.getElementById("backgroundaudio");
+        var isPlaying = false;
+
+        function togglePlay() 
+        {
+            if (isPlaying) {
+                myAudio.pause(); // Pause the audio
+            } else {
+                myAudio.muted = false; 
+                myAudio.play(); // Play the audio
+            }
+            isPlaying = !isPlaying; // Toggle the play state
+        }
+
+        myAudio.onplaying = function() {
+        isPlaying = true;
+        };
+        myAudio.onpause = function() {
+        isPlaying = false;
+        };
+
+        //animated speaker
+        var btn = document.getElementsByClassName('switch');
+
+        for (var x = 0; x < btn.length; x++){
+        ( function(_x){
+            btn[_x].addEventListener('click', function(){
+            if (btn[_x].classList.contains('mute')){
+                btn[_x].classList.remove('mute');
+            } else {
+                btn[_x].classList.add('mute');
+            }
+            });
+        })(x);
+        }
     </script>
     
 </body>
