@@ -34,26 +34,18 @@ body
     color: white;
     font-family: "halyard-text", sans-serif;
     text-align: start;
-    
-}
 
-.interact
-{
-    position: fixed;
-    bottom: 3rem;
-    right: 3rem;
-    padding: 1rem;
-    margin-bottom: -1rem;
-    margin-right: -1rem;
-    overflow: visible;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+    
 }
 
 @font-face {
     font-family: "halyard-text";
+    font-weight: 300;
     src: url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
          url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
          url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
-    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
@@ -74,18 +66,18 @@ body
 }
 
 .bg-container.move img {
-    width: 150%;
-    height: 150%;
+    width: 200%;
+    height: 200%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
     object-fit: cover;
-    animation: moveUpDown 5s ease-in-out infinite alternate;
+    animation: moveUpDown 6s ease-in-out infinite alternate;
 }
 
 @keyframes moveUpDown {
     0% { transform: translate(-50%, -50%) translateY(0); }  /* Default position */
-    50% { transform: translate(-50%, -50%) translateY(-8rem); }  /* Move down */
+    50% { transform: translate(-50%, -50%) translateY(-12rem); }  /* Move down */
     100% { transform: translate(-50%, -50%) translateY(0); }  /* Move back up */
 }
 
@@ -98,21 +90,25 @@ header, footer
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    /* background-color: blue; */
 }
 
-
+header p
+{
+    padding: 0rem;
+}
 
 /* Nav */
 .navbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     color: white;
     position: relative;
     z-index: 20;
-
-
+    height: 100%;
+    /* background-color: #B995AE; */
 }
 .menu-btn {
     cursor: pointer;
@@ -172,7 +168,7 @@ li:hover {
 }
 .logo-overlay.logo a{
     position: absolute;
-    top: 2.2rem;
+    top: 2.5rem;
 }
 a.impressum
 {
@@ -310,35 +306,41 @@ h1
 {
     font-size: 34px;
     font-weight: 300;
-    line-height: 95%;
+    line-height: 100%;
     padding: 1rem 0rem;
-    font-family: "halyard-text book", sans-serif;
+    font-family: "halyard-text", sans-serif;
 }
 h2, p.quote
 {
     font-size: 28px;
     font-weight: 300;
-    line-height: 95%;
+    line-height: 100%;
     padding: 1rem 0rem;
-    font-family: "halyard-text book", sans-serif;
+    font-family: "halyard-text", sans-serif;
 }
 p
 {
     font-size: 16px;
     font-weight: 300;
     line-height: 100%;
-    line-height: auto;
+    line-height: normal;
     letter-spacing: 0%;
-    font-family: "inter regular", sans-serif;
+    font-family: "inter", sans-serif;
+    padding-bottom: 0.2rem;
+}
+
+.body-info p
+{
     padding-bottom: 1rem;
 }
 span
 {
     font-size: 16px;
     font-weight: 300;
-    line-height: auto;
-    /* font-family: "halyard-text book", sans-serif; */
-    font-family: "inter regular", sans-serif;
+    /* line-height: 100%; */
+    line-height: normal;
+    /* font-family: "halyard-text", sans-serif; */
+    font-family: "inter", sans-serif;
     color: #B995AE;
     /* color: #a58b9d; */
 }
@@ -347,8 +349,8 @@ a, button
 {
     font-size: 16px;
     font-weight: 300;
-    line-height: auto;
-    font-family: "inter regular", sans-serif;
+    line-height: normal;
+    font-family: "inter", sans-serif;
     color: white;
 }
 
@@ -387,22 +389,70 @@ canvas {
 }
 
 
-.scrollpos
+.body-spenden
 {
-    display: none;
-    position: fixed;
-    left: 3.5rem;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
+    height: 100dvh;
 }
 
-.scrollpos div
+
+.impressum main div
 {
-    width: 8px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.365);
-    margin: 0.5rem;
+    padding-bottom: 2rem;
 }
+
+.impressum main p
+{
+    padding: 0rem 0rem 1rem 0rem
+}
+
+.impressum main h1
+{   
+    font-size: 32px;
+}
+
+.impressum main h2
+{   
+    font-size: 20px;
+}
+
+.impressum main ul li
+{   
+    list-style: circle;
+    font-size: 16px;
+    cursor: default;
+    font-family: "inter regular", sans-serif; 
+}
+
+.impressum main ul li:hover
+{   
+    color: white;
+}
+
+.impressum main ul
+{   
+    padding-left: 1.5rem;
+}
+
+.impressum main a
+{   
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+.interact
+{
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    padding: 1rem;
+    margin-bottom: -1rem;
+    margin-right: -1rem;
+    overflow: visible;
+}
+
 
 
 /* 05: Overlay */
@@ -491,9 +541,14 @@ canvas
     scrollbar-width: none; 
     width: 80vw;
     pointer-events: all;
+    /* border-bottom: solid 1px white; */
+    padding-bottom: 0rem;
+    margin-bottom: 1rem;
+
 }
 
 .horizontal-tabs li {
+    /* width: 100%; */
     white-space: nowrap;
     cursor: pointer;
     padding: 0.5rem 0rem;
@@ -595,6 +650,7 @@ main .scroll
     top: 3rem;
     right: 3rem;
     pointer-events: all;
+    cursor: pointer;
 }
 
 
@@ -705,6 +761,22 @@ section.cta div ul li div
     cursor: pointer;
 }
 
+#scroll
+{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    height: 20px;
+    margin-right: 50px;
+    margin-bottom: 25px;
+}
+
+#scroll span
+{
+   font-size: 12px;
+   color: white;
+}
+
 
 .backgroundaudio {
     height: 0;
@@ -723,8 +795,8 @@ section.cta div ul li div
   .equalizer .equalizer__bar {
       /* background: #C39DB7; */
       background: white;
-      bottom: 1px;
-      height: 3px;
+      bottom: 2px;
+      height: 1px;
       position: absolute;
       width: 1px;
       animation: sound 0ms -800ms linear infinite alternate;
@@ -736,37 +808,44 @@ section.cta div ul li div
     position: relative;
   }
   
-  .mute .equalizer .equalizer__bar {
+.playing  .equalizer .equalizer__bar {
     animation: sound 0ms -800ms linear alternate;
-  }
+}
+
+.mute .equalizer__bar {
+    animation: none; /* Stop animation by default */
+}
+
+
+
   .equalizer__bar:nth-of-type(1) {
           left: 1px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 0ms;
   }
   .equalizer__bar:nth-of-type(2) {
         left: 5px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 300ms;
   }
   .equalizer__bar:nth-of-type(3) {
     left: 9px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 600ms;
   }
   .equalizer__bar:nth-of-type(4) {
     left: 13px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 900ms;
   }
   .equalizer__bar:nth-of-type(5) {
     left: 17px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 1200ms;
   }
   .equalizer__bar:nth-of-type(6) {
         left: 21px;
-      animation-duration: 1000ms;
+      animation-duration: 1500ms;
       animation-delay: 1500ms;
   }
   
@@ -783,7 +862,50 @@ section.cta div ul li div
 
 
 
+  .blob-outer-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    inset: 0;
+    margin: auto;
+    filter: blur(100px);
+    opacity: 0.8;
+}
 
+.blob-inner-container {
+    border-radius: 99999px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100dvw;
+    height: 100dvh;
+    min-width: 1000px;
+    overflow: hidden;
+    background-color: #2f2930;
+    transform: scale(1.5);
+}
+
+.blob {
+    position: absolute;
+    width: 100dvw;
+    height: 100dvh;
+    inset: 0;
+    margin: auto;
+    background: conic-gradient(from 0deg, #675667, #282630, #4C435B, #413945, #685767, #614f5c);
+    /* animation: spinBlob 12s linear infinite; */
+    animation: spinBlob 12s alternate infinite;
+}
+
+@keyframes spinBlob {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(2);
+    }
+}
 
 /* __________________________________________ */
 
@@ -827,7 +949,7 @@ section.cta div ul li div
 
     .logo-overlay.logo a{
         position: absolute;
-        top: 1.7rem;
+        top: 2.2rem;
     }
 
     .nav-overlay a, .nav-overlay p {
@@ -858,10 +980,11 @@ section.cta div ul li div
         margin-left: 6rem;
     }
 
-    .to-top img
+    .to-top img, #scroll
     {
         margin-right: 6rem;
     }
+
 
     
     h1
@@ -869,7 +992,7 @@ section.cta div ul li div
         font-size: 80px;
         font-weight: 300;
         line-height: 100%;
-        font-family: "halyard-text book", sans-serif;
+        font-family: "halyard-text", sans-serif;
     }
     h2, p.quote
     {
@@ -882,17 +1005,17 @@ section.cta div ul li div
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: auto;
+        line-height: normal;
         letter-spacing: 0%;
-        font-family: "inter regular", sans-serif;
+        font-family: "inter", sans-serif;
     }
     span
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: auto;
+        line-height: normal;
         /* font-family: "halyard-text", sans-serif; */
-        font-family: "inter regular", sans-serif;
+        font-family: "inter", sans-serif;
         color: #C39DB7;
     }
 
@@ -900,9 +1023,9 @@ section.cta div ul li div
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: auto;
+        line-height: normal;
         /* font-family: "halyard-text", sans-serif; */
-        font-family: "inter regular", sans-serif;
+        font-family: "inter", sans-serif;
         color: white;
     }
 
@@ -916,9 +1039,9 @@ section.cta div ul li div
     {
         font-size: 20px;
         font-weight: 300;
-        line-height: auto;
+        line-height: normal;
         letter-spacing: 0%;
-        font-family: "inter regular", sans-serif;
+        font-family: "inter", sans-serif;
     }
 
     /* 02: Header, Footer */
@@ -949,7 +1072,7 @@ section.cta div ul li div
 
         .logo-overlay.logo a{
             position: absolute;
-            top: 1.55rem;
+            top: 2.1rem;
         }
 
         .close-btn {
@@ -1012,7 +1135,7 @@ section.cta div ul li div
             margin-left: 10rem;
         }
 
-        .to-top img
+        .to-top img, #scroll
         {
             margin-right: 10rem;
         }
@@ -1026,8 +1149,8 @@ section.cta div ul li div
         {
             font-size: 100px;
             font-weight: 300;
-            line-height: 95%;
-            font-family: "halyard-text book", sans-serif;
+            line-height: 100%;
+            font-family: "halyard-text", sans-serif;
         }
         h2, p.quote
         {
@@ -1192,6 +1315,12 @@ section.cta div ul li div
             width: 45vw;
         }
 
+        .testimonial-betroffene, .testimonial-angehoerige, .testimonial-fachpersonal
+        {
+            height: auto;
+            padding-bottom: 14rem;
+        }
+      
 }
 
 

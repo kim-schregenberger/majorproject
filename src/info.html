@@ -15,7 +15,9 @@
         <!-- NAV -->
         <div class="navbar">
             <div class="logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
-            <div class="menu-btn" onclick="toggleNav()">MENU</div>
+            <div class="menu-btn" onclick="toggleNav()">  
+                <p>MENU</p>
+            </div>
         </div>
     
         <div class="nav-overlay" id="navOverlay">
@@ -42,16 +44,18 @@
                 </div>
             </div>
             <div>
-                <a class="impressum" href="">Impressum und Datenschutz</a>
+                <a class="impressum" href="impressum.html">Impressum und Datenschutz</a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="bg-container move">
-            <img src="./images/bgimg.webp" alt="">
+        <div class="blob-outer-container">
+            <div class="blob-inner-container">
+                <div class="blob"></div>
+            </div>
         </div>
-
+        
         <div class="grain"></div>
 
             <!-- Sections -->
@@ -77,9 +81,9 @@
                     <p>Eine Krebsdiagnose stellt das Leben auf den Kopf. Umso wichtiger ist der Zugang zu vertrauenswürdigen Informationen und hilfreichen Angeboten.</p>
                     <p>Auf dieser Seite finden Sie Links zu Organisationen und Initiativen, die Betroffene in verschiedenen Phasen der Erkrankung unterstützen können.</p>
                     <p>Die Krebsliga hält umfassende Informationen zu Behandlungsmöglichkeiten, psychologischer Unterstützung und rechtlichen Fragen bereit und bietet Workshops und Treffen an.</p>
-                    <p>Auch Europa Donna Schweiz bietet mit dem Tavola Rosa eine Austauschmöglichkeit für Betroffenen und Angehörige.</p>
+                    <p>Auch Europa Donna Schweiz bietet mit dem Tavola Rosa eine Austauschmöglichkeit für Betroffene und Angehörige.</p>
                     <p>Programme wie Look Good Feel Better unterstützen Betroffene dabei, sich trotz verändertem Aussehen wieder besser im eigenen Körper zu fühlen.</p>
-                    <span>Sie sind nicht allein - Es gibt viele Angebote, die Sie während und nach der Krankheit unterstützen können.</span>
+                    <span>Du bist nicht allein - Es gibt viele Angebote, die dich während und nach der Krankheit unterstützen können.</span>
                 </div>
             </section>
 
@@ -109,27 +113,6 @@
     </main>
 
     <footer class="show-initial">
-        <!-- Audio -->
-        <div class="audio">
-            <audio id="backgroundaudio" autoplay loop muted>
-                <source src="./audio/MP Score Piano.mp3" type="audio/mpeg">
-                <source src="./audio/MP Score Piano.wav" type="audio/wav">
-              Your browser does not support the audio element.
-              </audio>
-              <a onClick="togglePlay()">
-                <div class="switch">
-                  <div class="equalizer">
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                  </div>
-                </div>
-                </a>                    
-        </div>
-
         <div class="to-top" id="to-top">
             <a href="#top">
                 <img src="./images/ArrowUp.svg" alt="">
@@ -182,44 +165,6 @@
                 }
             })
         })
-
-
-                // Audio
-                var myAudio = document.getElementById("backgroundaudio");
-        var isPlaying = false;
-
-        function togglePlay() 
-        {
-            if (isPlaying) {
-                myAudio.pause(); // Pause the audio
-            } else {
-                myAudio.muted = false; 
-                myAudio.play(); // Play the audio
-            }
-            isPlaying = !isPlaying; // Toggle the play state
-        }
-
-        myAudio.onplaying = function() {
-        isPlaying = true;
-        };
-        myAudio.onpause = function() {
-        isPlaying = false;
-        };
-
-        //animated speaker
-        var btn = document.getElementsByClassName('switch');
-
-        for (var x = 0; x < btn.length; x++){
-        ( function(_x){
-            btn[_x].addEventListener('click', function(){
-            if (btn[_x].classList.contains('mute')){
-                btn[_x].classList.remove('mute');
-            } else {
-                btn[_x].classList.add('mute');
-            }
-            });
-        })(x);
-        }
     </script>
     
 </body>

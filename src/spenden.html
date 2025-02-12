@@ -7,15 +7,17 @@
     <meta name="description" content="Gemeinsam gegen Brustkrebs. Worte, Gesten, Nähe – sie können mehr bewirken, als wir oft denken. Diese Seite lädt dich ein, zu verstehen und zu unterstützen.">
     <title>Code structuring</title>
     <link rel="stylesheet" href="./style.css">
-    <!-- <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css"> -->
+    <link rel="stylesheet" href="https://use.typekit.net/gqy2zvu.css">
 </head>
 
-<body>
+<body class="body-spenden">
     <header>
         <!-- NAV -->
         <div class="navbar">
             <div class="logo"><a href="index.html"><img src="./images/arrow.svg" alt="Logo" style="height: 10px;"></a></div>
-            <div class="menu-btn" onclick="toggleNav()">MENU</div>
+            <div class="menu-btn" onclick="toggleNav()">  
+                <p>MENU</p>
+            </div>
         </div>
     
         <div class="nav-overlay" id="navOverlay">
@@ -42,22 +44,23 @@
                 </div>
             </div>
             <div>
-                <a class="impressum" href="">Impressum und Datenschutz</a>
+                <a class="impressum" href="impressum.html">Impressum und Datenschutz</a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="bg-container move">
-            <img src="./images/bgimg.webp" alt="">
+        <div class="blob-outer-container">
+            <div class="blob-inner-container">
+                <div class="blob"></div>
+            </div>
         </div>
-        
             <!-- Add "show-initial" class to grain if don't want it in stages -->
             <div class="grain"></div>
 
             <!-- Sections -->
             <section class="hero spenden">
-                <p>Deine Unterstützung zählt und wird geschätzt. Setze Dich ein für Prävention und bessere Heilungschancen. </p>
+                <p>Deine Unterstützung zählt und wird geschätzt. Setze dich ein für Prävention und bessere Heilungschancen. </p>
                 <span>Gemeinsam gegen Brustkrebs.</span>
                 <h1>Schenke Hoffnung mit einer Spende</h1>
                 <a href="https://participate.krebsliga.ch/Kim-Schregenberger/myevent">
@@ -68,27 +71,6 @@
     </main>
 
     <footer class="show-initial">
-        <!-- Audio -->
-        <div class="audio">
-            <audio id="backgroundaudio" autoplay loop muted>
-                <source src="./audio/MP Score Piano.mp3" type="audio/mpeg">
-                <source src="./audio/MP Score Piano.wav" type="audio/wav">
-              Your browser does not support the audio element.
-              </audio>
-              <a onClick="togglePlay()">
-                <div class="switch">
-                  <div class="equalizer">
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                      <div class="equalizer__bar"></div>
-                  </div>
-                </div>
-                </a>                    
-        </div>
-
         <div class="to-top" id="to-top">
             <a href="#top">
                 <img src="./images/ArrowUp.svg" alt="">
@@ -141,44 +123,6 @@
                 }
             })
         })
-
-
-                // Audio
-                var myAudio = document.getElementById("backgroundaudio");
-        var isPlaying = false;
-
-        function togglePlay() 
-        {
-            if (isPlaying) {
-                myAudio.pause(); // Pause the audio
-            } else {
-                myAudio.muted = false; 
-                myAudio.play(); // Play the audio
-            }
-            isPlaying = !isPlaying; // Toggle the play state
-        }
-
-        myAudio.onplaying = function() {
-        isPlaying = true;
-        };
-        myAudio.onpause = function() {
-        isPlaying = false;
-        };
-
-        //animated speaker
-        var btn = document.getElementsByClassName('switch');
-
-        for (var x = 0; x < btn.length; x++){
-        ( function(_x){
-            btn[_x].addEventListener('click', function(){
-            if (btn[_x].classList.contains('mute')){
-                btn[_x].classList.remove('mute');
-            } else {
-                btn[_x].classList.add('mute');
-            }
-            });
-        })(x);
-        }
     </script>
     
 </body>

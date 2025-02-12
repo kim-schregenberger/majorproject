@@ -70,3 +70,56 @@ window.addEventListener("scroll", function () {
         gsap.to(toTopButton, { opacity: 0, duration: 0.5, ease: "power2.in", pointerEvents: "none" });
     }
 });
+
+
+const scrollHint = document.getElementById("scroll");
+const scrollText = document.getElementById("scrollText");
+
+    // Split text into individual spans
+    const letters = scrollText.textContent.split("").map(letter => {
+        const span = document.createElement("span");
+        span.textContent = letter;
+        return span;
+    });
+
+    // Clear the original text and append the new spans
+    scrollText.textContent = "";
+    letters.forEach(span => scrollText.appendChild(span));
+
+    let lettersAnimation;
+
+    function animateLetters() {
+        // Kill any existing animation before starting a new one
+        if (lettersAnimation) gsap.killTweensOf(letters);
+
+        // Reset all letters to full opacity
+        gsap.set(letters, { opacity: 1 });
+
+        // Create the wave effect: one letter at 0.4 opacity at a time
+        lettersAnimation = gsap.to(letters, {
+            opacity: 0.4,
+            duration: 2,
+            stagger: {
+                each: 0.1,
+                repeat: -1,
+                yoyo: true
+            },
+            ease: "sine.inOut"
+        });
+    }
+
+    // Start the looping animation initially
+    animateLetters();
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 150) {
+            // Stop letter animation and fade out
+            gsap.killTweensOf(letters); // Stop the wave effect
+            gsap.to(scrollHint, { opacity: 0, duration: 0.5, ease: "power2.out" });
+        } else {
+            // Resume animation when scrolling back up
+            animateLetters();
+            gsap.to(scrollHint, { opacity: 1, duration: 0.5, ease: "power2.in" });
+        }
+    });
+

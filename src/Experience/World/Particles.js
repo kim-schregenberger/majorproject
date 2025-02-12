@@ -33,6 +33,21 @@ export default class Particles {
 
         this.setModel()
         this.setScrollObserver()
+
+        window.addEventListener('resize', this.handleResize.bind(this))
+    }
+
+    handleResize() {
+        const newWidth = window.innerWidth;
+        const currentWidth = this.previousWidth || newWidth;
+
+        // Check if the window width has crossed 1024px threshold --> to update model size
+        if ((currentWidth <= 1024 && newWidth > 1024) || (currentWidth > 1024 && newWidth <= 1024)) {
+            // Reload the page if the threshold is crossed
+            window.location.reload();
+        }
+        // Update the previous width to compare on the next resize
+        this.previousWidth = newWidth;
     }
 
     setModel() 
@@ -43,6 +58,7 @@ export default class Particles {
   
         // Display the first model by default
         this.createParticles(5);
+        console.log('Initial model index:', this.currentModelIndex);
     }
 
     isMobile() {
@@ -243,6 +259,7 @@ export default class Particles {
                     const index = Array.from(sections).indexOf(entry.target);
     
                     if (index !== this.currentModelIndex) {
+                        console.log('Model changed, new index:', index); 
                         // Start transition by boosting flow field values
                         const oldGpgpu = this.gpgpu;
                         if (oldGpgpu) {
@@ -274,6 +291,7 @@ export default class Particles {
                 const progress = this.getScrollProgress(section);
         
                 if (index === this.currentModelIndex) {
+                    console.log('Scrolling, current model index:', this.currentModelIndex); 
                     const strength = THREE.MathUtils.lerp(10, 0.0, progress);
                     this.gpgpu.particlesVariable.material.uniforms.uFlowFieldStrength.value = strength * 0.1 + 0.01;
         

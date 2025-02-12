@@ -16,51 +16,53 @@
 </head>
 
 
-<header>
-    <!-- NAV -->
-    <div class="navbar show-initial">
-        <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px; display: none;"></a></div>
-        <div class="menu-btn" onclick="toggleNav()">MENU</div>
-    </div>
-
-    <div class="nav-overlay" id="navOverlay">
-        <div class="bg-container-nav lazy-load" id="navBg">
-            <img src="./images/bgimg.webp" alt="Background Image with gradient in dark violet, blue, rose tones">
-        </div>
-        <div class="logo-overlay logo"><a href="index.html" aria-label="Zurück zur Home-Seite"><img src="./images/Arrow.svg" alt="Zurück zur Startseite" style="width: 25px; height: 25px; visibility: hidden;"></a></div>
-        <div class="close-btn" onclick="toggleNav()"><img src="./images/cross.svg" alt="Cross to close" style="width: 20px; height: 20px;"></div>
-        <div class="navflex">
-            <div>
-                <p class="navstart">Startseite</p>
-                <a href="index.html#section-1">Stadium 1</a>
-                <a href="index.html#section-2">Stadium 2</a>
-                <a href="index.html#section-3">Stadium 3</a>
-                <a href="index.html#section-4">Stadium 4</a>
-            </div>
-    
-            <div>
-                <p class="navothets">Weitere Seiten</p>
-                <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
-                <a href="info.html" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
-                <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
-                <a href="spenden.html" onclick="closeNav()">Unterstützen</a>
-            </div>
-        </div>
-        <div>
-            <a class="impressum" href="">Impressum und Datenschutz</a>
-        </div>
-    </div>
-</header>
 
 <body>
+    <header>
+        <!-- NAV -->
+        <div class="navbar show-initial">
+            <div class="logo"><a href="index.html"><img src="./images/logo.svg" alt="Logo" style="width: 25px; height: 25px; display: none;"></a></div>
+            <div class="menu-btn" onclick="toggleNav()">  
+                <p>MENU</p>
+            </div>
+        </div>
+    
+        <div class="nav-overlay" id="navOverlay">
+            <div class="bg-container-nav lazy-load" id="navBg">
+                <img src="./images/bgimg.webp" alt="Background Image with gradient in dark violet, blue, rose tones">
+            </div>
+            <div class="logo-overlay logo"><a href="index.html" aria-label="Zurück zur Home-Seite"><img src="./images/Arrow.svg" alt="Zurück zur Startseite" style="width: 25px; height: 25px; visibility: hidden;"></a></div>
+            <div class="close-btn" onclick="toggleNav()"><img src="./images/cross.svg" alt="Cross to close" style="width: 20px; height: 20px;"></div>
+            <div class="navflex">
+                <div>
+                    <p class="navstart">Startseite</p>
+                    <a href="index.html#section-1">Stadium 1</a>
+                    <a href="index.html#section-2">Stadium 2</a>
+                    <a href="index.html#section-3">Stadium 3</a>
+                    <a href="index.html#section-4">Stadium 4</a>
+                </div>
+        
+                <div>
+                    <p class="navothets">Weitere Seiten</p>
+                    <a href="erfahrungen.html" onclick="closeNav()">Erfahrungsberichte</a>
+                    <a href="info.html" onclick="navigateToSection('betroffene')">Informationen für Betroffene</a>
+                    <a href="info.html#angehörige" onclick="navigateToSection('angehörige')">Informationen für Angehörige</a>
+                    <a href="spenden.html" onclick="closeNav()">Unterstützen</a>
+                </div>
+            </div>
+            <div>
+                <a class="impressum" href="impressum.html">Impressum und Datenschutz</a>
+            </div>
+        </div>
+    </header>
     <main>
-          <div class="bg-container lazy-load">
+          <div class="bg-container">
               <img src="./images/bgimg.webp" alt="Background Image with gradient in dark violet, blue, rose tones">
           </div>
       
           <!-- Loading screen -->
           <div id="loading-screen" class="loading">
-              <div class="bg-container lazy-load">
+              <div class="bg-container">
                   <img src="./images/bgimg.webp" alt="Background Image with gradient in dark violet, blue, rose tones">
               </div>
               <div class="grain"></div>
@@ -77,17 +79,6 @@
 
         <!-- Add "show-initial" class to grain if don't want it in stages -->
         <div class="grain"></div>
-        <div class="scrollpos">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
 
             <!-- Canvas -->
             <div class="canvas particles">
@@ -169,7 +160,7 @@
                                 </li>
                                 <li class="whole-model" data-camera-position="" data-text="Anzeichen wie - Knoten oder Verhärtung in der Brust, Grössen- oder Formveränderung der Brust, Hautveränderungen oder Veränderungen der Brustwarze - können auf eine Brustkrebserkrankung hinweisen.">Symptome
                                 </li>
-                                <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntrherapie reichen.">Behandlung
+                                <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntherapie reichen.">Behandlung
                                 </li>
                             </ul>
                             <p id="stage-description">
@@ -202,7 +193,7 @@
                             <li class="whole-model" data-camera-position="" data-text="Anzeichen wie - Knoten oder Verhärtung in der Brust, Grössen- oder Formveränderung der Brust, Hautveränderungen oder Veränderungen der Brustwarze - können auf eine Brustkrebserkrankung hinweisen.">Symptome
 
                             </li>
-                            <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntrherapie reichen.">Behandlung
+                            <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntherapie reichen.">Behandlung
 
                             </li>
                          </ul>
@@ -232,7 +223,7 @@
                                 </li>
                                 <li class="whole-model" data-camera-position="" data-text="Anzeichen wie - Schwellungen an der Brust oder des Arms, Gewichtsverlust, anhaltende Müdigkeit oder allgemeines Unwohlsein - können auf eine fortgeschrittene Brustkrebserkrankung hinweisen.">Symptome
                                 </li>
-                                <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntrherapie reichen.">Behandlung
+                                <li class="whole-model" data-camera-position="" data-text="Die Behandlungsmethoden werden individuell auf die Betroffenen und deren Befund und Tumorprofil abgestimmt, können aber von einer Operation über Bestrahlung bis hin zu Chemo-, Antihormon- oder Immuntherapie reichen.">Behandlung
                                 </li>
                             </ul>
                             <p id="stage-description">
@@ -341,8 +332,11 @@
                 </div>
                 </a>                    
         </div>
+        <div class="scroll" id="scroll">
+            <span id="scrollText">Scrollen und entdecken</span>
+        </div>
         <div class="to-top" id="to-top">
-            <a href="#top" aria-label="back to top">
+            <a href="#" aria-label="back to top">
                 <img src="./images/ArrowUp.svg" alt="zum Seitenanfang">
             </a>
         </div>
@@ -402,41 +396,57 @@
 
         // Audio
         var myAudio = document.getElementById("backgroundaudio");
+        var equalizer = document.querySelector(".equalizer");
+        var speakerIcon = document.querySelector(".switch");
         var isPlaying = false;
 
-        function togglePlay() 
-        {
+        // Ensure the equalizer and speaker icon do NOT animate on page load when audio is muted
+        document.addEventListener("DOMContentLoaded", function () {
+            if (myAudio.muted || myAudio.paused) {
+                equalizer.classList.remove("playing");
+                speakerIcon.classList.add("mute");
+            } else {
+                equalizer.classList.add("playing"); 
+                speakerIcon.classList.remove("mute");
+            }
+        });
+
+        // Toggle Audio Play/Pause
+        function togglePlay() {
             if (isPlaying) {
-                myAudio.pause(); // Pause the audio
+                myAudio.pause();
+                equalizer.classList.remove("playing"); 
+                speakerIcon.classList.add("mute"); 
+                isPlaying = false;
             } else {
                 myAudio.muted = false; 
-                myAudio.play(); // Play the audio
+
+                var playPromise = myAudio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        equalizer.classList.add("playing"); 
+                        speakerIcon.classList.remove("mute");
+                        isPlaying = true;
+                    }).catch(error => {
+                        console.warn("Autoplay failed. User interaction required:", error);
+                    });
+                }
             }
-            isPlaying = !isPlaying; // Toggle the play state
         }
 
-        myAudio.onplaying = function() {
-        isPlaying = true;
+        // Ensure the equalizer and speaker icon sync with the actual audio state
+        myAudio.onplaying = function () {
+            isPlaying = true;
+            equalizer.classList.add("playing");
+            speakerIcon.classList.remove("mute"); 
         };
-        myAudio.onpause = function() {
-        isPlaying = false;
+
+        myAudio.onpause = function () {
+            isPlaying = false;
+            equalizer.classList.remove("playing");
+            speakerIcon.classList.add("mute");
         };
-
-        //animated speaker
-        var btn = document.getElementsByClassName('switch');
-
-        for (var x = 0; x < btn.length; x++){
-        ( function(_x){
-            btn[_x].addEventListener('click', function(){
-            if (btn[_x].classList.contains('mute')){
-                btn[_x].classList.remove('mute');
-            } else {
-                btn[_x].classList.add('mute');
-            }
-            });
-        })(x);
-        }
-
 
 
 
@@ -448,12 +458,7 @@
         link.type = 'text/css';
         document.head.appendChild(link);
     })();
-
-
-
-
-
-                
+         
     </script>
     
     
