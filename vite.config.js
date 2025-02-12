@@ -22,6 +22,7 @@ export default {
                 erfahrungen: 'src/erfahrungen.html',
                 info: 'src/info.html',
                 spenden: 'src/spenden.html',
+                impressum: 'src/impressum.html',
             },
         },
     },
