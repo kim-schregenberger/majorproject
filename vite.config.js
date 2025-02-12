@@ -25,6 +25,11 @@ export default {
                 impressum: 'src/impressum.html',
             },
         },
+        output: {
+            entryFileNames: 'assets/[name]-[hash].js',
+            chunkFileNames: 'assets/[name]-[hash].js',
+            assetFileNames: 'assets/[name]-[hash].[ext]',
+        }
     },
     plugins:
     [
