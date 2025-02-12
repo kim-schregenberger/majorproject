@@ -40,7 +40,7 @@ body
     
 }
 
-@font-face {
+/* @font-face {
     font-family: "halyard-text";
     font-weight: 300;
     src: url("https://use.typekit.net/af/f7ab74/00000000000000007757e156/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
@@ -49,6 +49,8 @@ body
     font-style: normal;
     font-display: swap;
 }
+
+@import url("https://use.typekit.net/gqy2zvu.css"); */
 
 
 .bg-container img {
@@ -308,7 +310,7 @@ h1
     font-weight: 300;
     line-height: 100%;
     padding: 1rem 0rem;
-    font-family: "halyard-text", sans-serif;
+    /* font-family: "halyard-text", sans-serif; */
 }
 h2, p.quote
 {
@@ -1150,7 +1152,7 @@ section.cta div ul li div
             font-size: 100px;
             font-weight: 300;
             line-height: 100%;
-            font-family: "halyard-text", sans-serif;
+            /* font-family: "halyard-text", sans-serif; */
         }
         h2, p.quote
         {
